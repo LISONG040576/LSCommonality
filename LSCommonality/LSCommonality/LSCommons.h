@@ -49,7 +49,7 @@
 #define FontBold(a) [UIFont boldSystemFontOfSize:(kSCREEN_SIZE.width == 320 ? a : (kSCREEN_SIZE.width == 375 ? a + 1 : a + 2))]
 #define Font_MN(a) [UIFont fontWithName:@"Lao Sangam MN" size:(kSCREEN_SIZE.width == 320 ? a : (kSCREEN_SIZE.width == 375 ? a + 1 : a + 2))]
 //图片创建
-//#define ImageWithName(imageName) [UIImage imageNamed:imageName]
+#define ImageWithName(imageName) [UIImage imageNamed:imageName]
 
 //数字转字符串
 #define  StringWithNum(type,num) [NSString stringWithFormat:type,num]
@@ -58,10 +58,10 @@
 #define  URLWithString(urlString) [NSURL URLWithString:urlString]
 
 //机型判断 -
-//#define iPhone4s    ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(320, 480), [[UIScreen mainScreen] currentMode].size) : NO)
-//#define iPhone5     ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
-//#define iPhone6     ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)
-//#define iPhone6plus ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
+#define iPhone4s    ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(320, 480), [[UIScreen mainScreen] currentMode].size) : NO)
+#define iPhone5     ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+#define iPhone6     ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)
+#define iPhone6plus ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
 
 
 #endif /* LSCommons_h */
