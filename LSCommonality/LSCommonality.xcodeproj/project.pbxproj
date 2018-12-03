@@ -55,7 +55,6 @@
 		F517191321B4C9040072B6D2 /* UIView+ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ViewController.m"; sourceTree = "<group>"; };
 		F517191521B4C90C0072B6D2 /* UIViewController+LSNumberTypeJudge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LSNumberTypeJudge.m"; sourceTree = "<group>"; };
 		F517191621B4C90C0072B6D2 /* UIViewController+LSNumberTypeJudge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LSNumberTypeJudge.h"; sourceTree = "<group>"; };
-		F517191821B4CC1A0072B6D2 /* LSCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSCommon.h; sourceTree = "<group>"; };
 		F517191921B4D1790072B6D2 /* LSUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSUserModel.h; sourceTree = "<group>"; };
 		F517191A21B4D1790072B6D2 /* LSUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSUserModel.m; sourceTree = "<group>"; };
 		F517191D21B4DA800072B6D2 /* LSCommonModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSCommonModule.h; sourceTree = "<group>"; };
@@ -71,6 +70,7 @@
 		F517192F21B513F80072B6D2 /* LSWebViewLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSWebViewLoadingView.h; sourceTree = "<group>"; };
 		F517193121B5141D0072B6D2 /* LSCornerRadius.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCornerRadius.h; sourceTree = "<group>"; };
 		F517193221B5141D0072B6D2 /* LSCornerRadius.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCornerRadius.m; sourceTree = "<group>"; };
+		F517193421B52FD40072B6D2 /* LSCommons.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSCommons.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,7 +210,7 @@
 		F517192121B507BB0072B6D2 /* tools */ = {
 			isa = PBXGroup;
 			children = (
-				F517191821B4CC1A0072B6D2 /* LSCommon.h */,
+				F517193421B52FD40072B6D2 /* LSCommons.h */,
 				F517190D21B4C5B30072B6D2 /* LSUtilities.h */,
 				F517190C21B4C5B30072B6D2 /* LSUtilities.m */,
 				F517193121B5141D0072B6D2 /* LSCornerRadius.h */,

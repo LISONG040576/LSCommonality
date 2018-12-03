@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   
   s.name         = "LSCommonality"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "LSCommonality."
 
   
@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'tools' do |s2|
 
-	s2.source_files = "LSCommonality/**/tools/*.{h,m}"
+	s2.source_files = "LSCommonality/**/tools/*.{h,m}","LSCommonality/LSCommonality/tools/LSCommon.h"
 	
   end
 

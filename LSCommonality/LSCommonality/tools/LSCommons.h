@@ -1,13 +1,14 @@
 //
-//  HSCommon.h
-//  HairSmart
+//  LSCommons.h
+//  LSCommonality
 //
-//  Created by Vols on 16/3/1.
-//  Copyright © 2016年 HairSmart. All rights reserved.
-//  定义相关宏
+//  Created by 海尔智能-李松 on 2018/12/3.
+//  Copyright © 2018 lisong. All rights reserved.
+//
 
-#ifndef LSCommon_h
-#define LSCommon_h
+#ifndef LSCommons_h
+#define LSCommons_h
+
 
 
 
@@ -62,4 +63,5 @@
 #define iPhone6     ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)
 #define iPhone6plus ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
 
-#endif /* LSCommon_h */
+
+#endif /* LSCommons_h */

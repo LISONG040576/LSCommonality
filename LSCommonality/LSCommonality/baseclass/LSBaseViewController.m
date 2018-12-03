@@ -14,7 +14,7 @@
 
 
 #import "LSBaseViewController.h"
-#import "LSCommon.h"
+#import "LSCommons.h"
 #import <SDAutoLayout/UIView+SDAutoLayout.h>
 
 @interface LSBaseViewController ()
