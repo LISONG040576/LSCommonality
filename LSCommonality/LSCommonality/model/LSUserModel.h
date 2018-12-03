@@ -11,6 +11,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "LSCommon.h"
 
 #define MaxUserLoginListNum             6
 
