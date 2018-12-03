@@ -16,7 +16,7 @@
 #import "UIViewExt.h"
 #import "LSUserModel.h"
 #import "LSBaseViewController.h"
-#import "UIView+SDAutoLayout.h"
+#import <SDAutoLayout/UIView+SDAutoLayout.h>
 #import "UIView+ViewController.h"
 #import "LSBaseWebViewController.h"
 
