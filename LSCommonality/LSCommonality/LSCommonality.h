@@ -10,9 +10,9 @@
 #define LSCommonality_h
 
 
+#import "LSCommons.h"
 #import "LSUtilities.h"
 #import "LSBaseModel.h"
-#import "LSCommons.h"
 #import "UIViewExt.h"
 #import "LSUserModel.h"
 #import "LSBaseViewController.h"

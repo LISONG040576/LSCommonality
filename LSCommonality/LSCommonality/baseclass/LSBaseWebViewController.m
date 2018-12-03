@@ -7,7 +7,8 @@
 //
 
 #import "LSBaseWebViewController.h"
-#import "LSCommonality.h"
+#import "LSCommons.h"
+#import <SDAutoLayout/UIView+SDAutoLayout.h>
 #import "LSWebViewLoadingView.h"
 
 @interface LSBaseWebViewController () <WKUIDelegate,WKNavigationDelegate>
@@ -201,12 +202,7 @@
 
 - (void)OC2JS{
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@&userId=%@&phoneNumber=%@#", self.theURL, USER.bj_userId, USER.phone];
-    NSURL *url = [NSURL URLWithString:[urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-
-    NSURLRequest *request =[NSURLRequest requestWithURL:url];
-    
-    [_webView loadRequest:request];
+   
 
     
 }
