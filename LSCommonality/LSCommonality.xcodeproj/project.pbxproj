@@ -124,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				F517192A21B5081D0072B6D2 /* LSCommonality.h */,
+				F517193421B52FD40072B6D2 /* LSCommons.h */,
 				F517192021B507BB0072B6D2 /* resource */,
 				F517192121B507BB0072B6D2 /* tools */,
 				F517191C21B4DA640072B6D2 /* module */,
@@ -210,7 +211,6 @@
 		F517192121B507BB0072B6D2 /* tools */ = {
 			isa = PBXGroup;
 			children = (
-				F517193421B52FD40072B6D2 /* LSCommons.h */,
 				F517190D21B4C5B30072B6D2 /* LSUtilities.h */,
 				F517190C21B4C5B30072B6D2 /* LSUtilities.m */,
 				F517193121B5141D0072B6D2 /* LSCornerRadius.h */,

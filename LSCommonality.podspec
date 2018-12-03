@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   
   s.name         = "LSCommonality"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "LSCommonality."
 
   
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   
   s.source       = { :git => "https://github.com/LISONG040576/LSCommonality.git", :tag => s.version.to_s }
 
-  s.source_files  = "LSCommonality","LSCommonality/LSCommonality/LSCommonality.h"
+  s.source_files  = "LSCommonality","LSCommonality/LSCommonality/LSCommonality.h","LSCommonality/LSCommonality/LSCommons.h"
 
 
 
@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'tools' do |s2|
 
-	s2.source_files = "LSCommonality/**/tools/*.{h,m}","LSCommonality/LSCommonality/tools/LSCommon.h"
+	s2.source_files = "LSCommonality/**/tools/*.{h,m}"
 	
   end
 
@@ -70,7 +70,7 @@ Pod::Spec.new do |s|
 
   s.platform = :ios
 
-  s.frameworks ="UIKit","Foundation","WebKit"
+  s.frameworks ="UIKit","Foundation","WebKit","CommonCrypto"
 
   s.ios.deployment_target = '6.0'
 
