@@ -1,0 +1,37 @@
+PODS:
+  - FLAnimatedImage (1.0.12)
+  - LSMiddleWare (0.0.2)
+  - SDAutoLayout (2.2.1)
+  - SDWebImage (4.4.2):
+    - SDWebImage/Core (= 4.4.2)
+  - SDWebImage/Core (4.4.2)
+  - SDWebImage/GIF (4.4.2):
+    - FLAnimatedImage (~> 1.0)
+    - SDWebImage/Core
+  - SVProgressHUD (2.2.5)
+
+DEPENDENCIES:
+  - LSMiddleWare (~> 0.0.2)
+  - SDAutoLayout
+  - SDWebImage
+  - SDWebImage/GIF
+  - SVProgressHUD
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - FLAnimatedImage
+    - LSMiddleWare
+    - SDAutoLayout
+    - SDWebImage
+    - SVProgressHUD
+
+SPEC CHECKSUMS:
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
+  LSMiddleWare: aab6e635d709c611b8e4eb90c202abd5226ec4d4
+  SDAutoLayout: 8bf6b3bbc8b01f775d4defbb4fda2ace805461be
+  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+
+PODFILE CHECKSUM: 88c1f8764b48d6b4eb64958e83b4bd51fae72107
+
+COCOAPODS: 1.5.3

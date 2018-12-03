@@ -1,0 +1,19 @@
+platform:ios,'8.0'
+target:LSCommonality do
+
+    
+    pod 'LSMiddleWare', '~> 0.0.2'       # 中间件组件
+    
+    pod'SVProgressHUD'                   # loading提示
+    
+    pod 'SDWebImage'                     # 图片加载
+    pod 'SDWebImage/GIF'
+    
+    
+    pod "SDAutoLayout"                   # 布局工具
+
+
+
+
+
+end
