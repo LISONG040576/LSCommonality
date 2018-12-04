@@ -28,6 +28,7 @@
 		F517192D21B50A360072B6D2 /* LSBaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F517192C21B50A360072B6D2 /* LSBaseWebViewController.m */; };
 		F517193021B513F80072B6D2 /* LSWebViewLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F517192E21B513F80072B6D2 /* LSWebViewLoadingView.m */; };
 		F517193321B5141D0072B6D2 /* LSCornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = F517193221B5141D0072B6D2 /* LSCornerRadius.m */; };
+		F517193721B61E6D0072B6D2 /* LSCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = F517193621B61E6D0072B6D2 /* LSCommon.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,7 +71,8 @@
 		F517192F21B513F80072B6D2 /* LSWebViewLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSWebViewLoadingView.h; sourceTree = "<group>"; };
 		F517193121B5141D0072B6D2 /* LSCornerRadius.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCornerRadius.h; sourceTree = "<group>"; };
 		F517193221B5141D0072B6D2 /* LSCornerRadius.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCornerRadius.m; sourceTree = "<group>"; };
-		F517193421B52FD40072B6D2 /* LSCommons.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSCommons.h; sourceTree = "<group>"; };
+		F517193521B61E6D0072B6D2 /* LSCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSCommon.h; sourceTree = "<group>"; };
+		F517193621B61E6D0072B6D2 /* LSCommon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LSCommon.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				F517192A21B5081D0072B6D2 /* LSCommonality.h */,
-				F517193421B52FD40072B6D2 /* LSCommons.h */,
 				F517192021B507BB0072B6D2 /* resource */,
 				F517192121B507BB0072B6D2 /* tools */,
 				F517191C21B4DA640072B6D2 /* module */,
@@ -215,6 +216,8 @@
 				F517190C21B4C5B30072B6D2 /* LSUtilities.m */,
 				F517193121B5141D0072B6D2 /* LSCornerRadius.h */,
 				F517193221B5141D0072B6D2 /* LSCornerRadius.m */,
+				F517193521B61E6D0072B6D2 /* LSCommon.h */,
+				F517193621B61E6D0072B6D2 /* LSCommon.m */,
 			);
 			path = tools;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				F51718EE21B10BE10072B6D2 /* LSCommonViewController.m in Sources */,
 				F517191B21B4D1790072B6D2 /* LSUserModel.m in Sources */,
 				F517193021B513F80072B6D2 /* LSWebViewLoadingView.m in Sources */,
+				F517193721B61E6D0072B6D2 /* LSCommon.m in Sources */,
 				F51718F921B10BE20072B6D2 /* main.m in Sources */,
 				F51718EB21B10BE10072B6D2 /* LSCommonAppDelegate.m in Sources */,
 				F517192D21B50A360072B6D2 /* LSBaseWebViewController.m in Sources */,

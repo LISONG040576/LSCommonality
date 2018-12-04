@@ -1,15 +1,12 @@
 //
-//  LSCommons.h
+//  LSCommon.h
 //  LSCommonality
 //
-//  Created by 海尔智能-李松 on 2018/12/3.
+//  Created by 海尔智能-李松 on 2018/12/4.
 //  Copyright © 2018 lisong. All rights reserved.
 //
 
-#ifndef LSCommons_h
-#define LSCommons_h
-
-
+#import <Foundation/Foundation.h>
 
 
 //打印替换
@@ -64,4 +61,11 @@
 #define iPhone6plus ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
 
 
-#endif /* LSCommons_h */
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface LSCommon : NSObject
+
+@end
+
+NS_ASSUME_NONNULL_END

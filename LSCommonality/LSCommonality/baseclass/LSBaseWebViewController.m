@@ -7,7 +7,7 @@
 //
 
 #import "LSBaseWebViewController.h"
-#import "LSCommons.h"
+#import "LSCommon.h"
 #import <SDAutoLayout/UIView+SDAutoLayout.h>
 #import "LSWebViewLoadingView.h"
 

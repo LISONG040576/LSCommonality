@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   
   s.name         = "LSCommonality"
-  s.version      = "0.0.6"
+  s.version      = "0.0.9"
   s.summary      = "LSCommonality."
 
   
@@ -18,73 +18,30 @@ Pod::Spec.new do |s|
   
   s.source       = { :git => "https://github.com/LISONG040576/LSCommonality.git", :tag => s.version.to_s }
 
-  s.source_files  = "LSCommonality","LSCommonality/LSCommonality/*.{h,m}"
+  s.source_files  = "LSCommonality/LSCommonality/LSCommonality.h","LSCommonality/LSCommonality/**/*.{h,m}"
 
+  s.resources = "LSCommonality/LSCommonality/**/*.{png,jpg}"
 
-
-  s.subspec 'resource' do |s1|
-
-	s1.resources = "LSCommonality/**/resource/*.{png,jpg}"
-	
-  end
-
-  s.subspec 'tools' do |s2|
-
-	s2.source_files = "LSCommonality/**/tools/*.{h,m}"
-	
-  end
-
-  s.subspec 'module' do |s3|
-
-	s3.source_files = "LSCommonality/**/module/*.{h,m}"
-	
-  end
-
-  s.subspec 'baseclass' do |s4|
-
-	s4.source_files = "LSCommonality/**/baseclass/*.{h,m}"
-	
-  end
-
-  s.subspec 'categary' do |s5|
-
-	s5.source_files = "LSCommonality/**/categary/*.{h,m}"
-	
-  end
-
-  s.subspec 'customview' do |s6|
-
-	s6.source_files = "LSCommonality/**/customview/*.{h,m}"
-	
-  end
-
-  s.subspec 'model' do |s7|
-
-	s7.source_files = "LSCommonality/**/model/*.{h,m}"
-	
-  end
-	
+  	
 
 
   s.requires_arc = true
 
   s.platform = :ios
 
-  s.frameworks ="UIKit","Foundation","WebKit","CommonCrypto"
+  s.frameworks ="UIKit","Foundation","WebKit"
 
-  s.ios.deployment_target = '6.0'
+  s.ios.deployment_target = '8.0'
 
 
 
   s.dependency "LSMiddleWare", "~> 0.0.2"
   
-  s.dependency "SVProgressHUD"
+  s.dependency "SVProgressHUD" , "~> 2.2.5"
 
   s.dependency "SDWebImage"
 
-  s.dependency "SDWebImage/GIF"
-
-  s.dependency "SDAutoLayout"
+  s.dependency "SDAutoLayout", "~> 2.2.1"
 
 
 
