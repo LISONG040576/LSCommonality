@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   
   s.name         = "LSCommonality"
-  s.version      = "0.0.9"
+  s.version      = "0.0.10"
   s.summary      = "LSCommonality."
 
   
@@ -18,9 +18,44 @@ Pod::Spec.new do |s|
   
   s.source       = { :git => "https://github.com/LISONG040576/LSCommonality.git", :tag => s.version.to_s }
 
-  s.source_files  = "LSCommonality/LSCommonality/LSCommonality.h","LSCommonality/LSCommonality/**/*.{h,m}"
+  s.source_files  = "LSCommonality/LSCommonality/LSCommonality.h"
+
+#,"LSCommonality/LSCommonality/**/*.{h,m}"
 
   s.resources = "LSCommonality/LSCommonality/**/*.{png,jpg}"
+
+
+  s.subspec  'tools' do |s1|
+	
+	s1.source_files = "LSCommonality/LSCommonality/tools/*.{h,m}"
+  end
+
+  s.subspec  'model' do |s2|
+	
+	s2.source_files = "LSCommonality/LSCommonality/model/*.{h,m}"
+  end
+
+  s.subspec  'module' do |s3|
+	
+	s3.source_files = "LSCommonality/LSCommonality/module/*.{h,m}"
+  end
+
+  s.subspec  'customview' do |s4|
+	
+	s4.source_files = "LSCommonality/LSCommonality/customview/*.{h,m}"
+  end
+
+  s.subspec  'categary' do |s5|
+	
+	s5.source_files = "LSCommonality/LSCommonality/categary/*.{h,m}"
+  end
+
+  s.subspec  'baseclass' do |s6|
+	
+	s6.source_files = "LSCommonality/LSCommonality/baseclass/*.{h,m}"
+  end
+
+
 
   	
 
