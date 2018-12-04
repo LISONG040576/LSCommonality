@@ -7,8 +7,7 @@
 //
 
 #import "LSWebViewLoadingView.h"
-#import "LSCommon.h"
-#import "UIViewExt.h"
+#import "LSCommonality.h"
 
 @implementation LSWebViewLoadingView
 
