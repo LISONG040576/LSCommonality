@@ -7,7 +7,7 @@
 //
 
 #import "LSUserModel.h"
-#import "LSCommonality.h"
+#import "LSCommon.h"
 
 
 

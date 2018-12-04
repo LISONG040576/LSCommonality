@@ -7,7 +7,8 @@
 //
 
 #import "LSWebViewLoadingView.h"
-#import "LSCommonality.h"
+#import "LSCommon.h"
+#import <SDAutoLayout/UIView+SDAutoLayout.h>
 
 @implementation LSWebViewLoadingView
 

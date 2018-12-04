@@ -7,7 +7,8 @@
 //
 
 #import "LSBaseWebViewController.h"
-#import "LSCommonality.h"
+#import "LSCommon.h"
+#import <SDAutoLayout/UIView+SDAutoLayout.h>
 #import "LSWebViewLoadingView.h"
 
 @interface LSBaseWebViewController () <WKUIDelegate,WKNavigationDelegate>
