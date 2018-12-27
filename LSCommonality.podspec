@@ -19,12 +19,12 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/LISONG040576/LSCommonality.git", :tag => s.version.to_s }
 
   s.source_files  = "LSCommonality/LSCommonality/LSCommonality.h"
+
+
+
   s.public_header_files = "LSCommonality/LSCommonality/LSCommonality.h"
 
-
-
   s.resources = "LSCommonality/LSCommonality/**/*.{png,jpg}"
-
 
   s.subspec  'tools' do |s1|
 	
@@ -92,6 +92,8 @@ Pod::Spec.new do |s|
   s.dependency "SDWebImage"
 
   s.dependency "SDAutoLayout", "~> 2.2.1"
+
+  s.dependency "Masonry"
 
 
 

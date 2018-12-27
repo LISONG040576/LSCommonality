@@ -41,14 +41,30 @@
  *  @return Str的MD5（小写）
  */
 + (NSString *) MD5WithString:(NSString *)string;
-/**
- *  @author andy, 16-05-16 19:05:10
- *
- *  @brief 保存用户信息
- *
- *  @param info 用户信息
- */
+
+
 + (BOOL) hasLogin;
+
+
+
+/**
+ *  判断是否是手机号码
+ *
+ *  @param numberStr 传入的手机号码
+ *
+ *  @return 返回布尔值
+ */
+
+
++ (BOOL)isPhoneNumberWithString:(NSString *)numberStr;
+/**
+ *  判断是否是银行卡号
+ *
+ *  @param numberStr 传入的银行卡号
+ *
+ *  @return 返回布尔值
+ */
++ (BOOL)isBankCardNumberWithString:(NSString *)numberStr;
 
 
 

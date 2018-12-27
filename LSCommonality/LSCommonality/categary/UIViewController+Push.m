@@ -34,7 +34,11 @@ NSString * const UIViewController_Push_CallBackKey = @"UIViewController_Push_Cal
     return objc_getAssociatedObject(self, &UIViewController_Push_CallBackKey);
 }
 
-- (void)turnToViewController:(NSString *)viewControllerString params:(nullable NSMutableDictionary *)paramDic callBack:(nullable void(^)(NSDictionary *callBackParams))callBack turnType:(HEViewControlllerTurnType)turnType animation:(BOOL)animation
+- (void)turnToViewController:(NSString *)viewControllerString
+                      params:(nullable NSMutableDictionary *)paramDic
+                    callBack:(nullable void(^)(NSDictionary *callBackParams))callBack
+                    turnType:(HEViewControlllerTurnType)turnType
+                   animation:(BOOL)animation
 {
     Class clazz = NSClassFromString(viewControllerString);
     

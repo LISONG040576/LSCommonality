@@ -19,27 +19,27 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    __weak LSCommonViewController *weakVC = self;
-    [[NSTimer scheduledTimerWithTimeInterval:10 * 60 repeats:YES block:^(NSTimer * _Nonnull timer) {
-        
-        if (weakVC.view.backgroundColor == [UIColor whiteColor]) {
-            weakVC.view.backgroundColor = [UIColor blueColor];
-        }else{
-            weakVC.view.backgroundColor = [UIColor whiteColor];
-        }
-        
-        
-    }] fire] ;
+//    __weak LSCommonViewController *weakVC = self;
+//    [[NSTimer scheduledTimerWithTimeInterval:10 * 60 repeats:YES block:^(NSTimer * _Nonnull timer) {
+//
+//        if (weakVC.view.backgroundColor == [UIColor whiteColor]) {
+//            weakVC.view.backgroundColor = [UIColor blueColor];
+//        }else{
+//            weakVC.view.backgroundColor = [UIColor whiteColor];
+//        }
+//
+//        
+//    }] fire] ;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
     [self turnToViewController:@"LSBaseWebViewController"
-                        params:[NSMutableDictionary
-                                dictionaryWithDictionary:@{@"webUrlStr":@"https://www.baidu.com"}]
+                        params:[NSMutableDictionary dictionaryWithDictionary:@{@"webUrlStr":@"https://www.baidu.com"}]
                       callBack:^(NSDictionary * _Nonnull callBackParams) {
-        
-    } turnType:(HEViewControlllerTurnTypePresent) animation:YES];
+    }
+                      turnType:(HEViewControlllerTurnTypePresent)
+                     animation:YES];
     
 
 }

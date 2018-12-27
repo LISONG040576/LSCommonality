@@ -63,25 +63,18 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     self.noDataImageView.hidden = YES;
-    
     UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_SIZE.width, 20)];
     topView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:topView];
-    
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-//    self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
-    
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-
 }
 
 - (void)displayUI{
@@ -93,8 +86,6 @@
     if(self.theURL.length == 0){
         self.title = @"url is null";
     }else{
-        
-        
         NSURL *url = [NSURL URLWithString:[self.theURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         NSURLRequest *request =[NSURLRequest requestWithURL:url];
         [_webView loadRequest:request];
@@ -245,14 +236,14 @@
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
     NSLog(@" --- web界面在请求发送之前，决定是否跳转");
 
-    decisionHandler(WKNavigationActionPolicyAllow);//允许
+    decisionHandler(WKNavigationActionPolicyAllow);//允许跳转，相当于返回YES
 //    decisionHandler(WKNavigationActionPolicyCancel);//不允许
 }
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler{
     NSLog(@" --- web界面在收到相应之后，决定是否跳转");
     
-    decisionHandler(WKNavigationResponsePolicyAllow);//允许
+    decisionHandler(WKNavigationResponsePolicyAllow);//允许跳转，相当于返回YES
 //    decisionHandler(WKNavigationResponsePolicyCancel);//不允许
 }
 

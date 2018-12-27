@@ -62,7 +62,12 @@ NS_ASSUME_NONNULL_BEGIN
  @param selectCell 点击事件block
  @return HFTableView
  */
-+ (instancetype)tableViewWithFrame:(CGRect)frame sectionCount:(NSInteger (^)(UITableView *tableView))sectionCount rowCount:(NSInteger (^)(NSInteger sectionIndex, UITableView *tableView))rowCount cell:(HFBaseTableViewCell *(^)(NSIndexPath *indexPath, UITableView *tableView))cell cellHeight:(CGFloat (^)(NSIndexPath *indexPath, UITableView *tableView))cellHeight selectCell:(void(^)(NSIndexPath *indexPath, UITableView *tableView))selectCell;
++ (instancetype)tableViewWithFrame:(CGRect)frame
+                      sectionCount:(NSInteger (^)(UITableView *tableView))sectionCount
+                          rowCount:(NSInteger (^)(NSInteger sectionIndex, UITableView *tableView))rowCount
+                              cell:(HFBaseTableViewCell *(^)(NSIndexPath *indexPath, UITableView *tableView))cell
+                        cellHeight:(CGFloat (^)(NSIndexPath *indexPath, UITableView *tableView))cellHeight
+                        selectCell:(void(^)(NSIndexPath *indexPath, UITableView *tableView))selectCell;
 
 @end
 

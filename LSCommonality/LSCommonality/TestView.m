@@ -7,11 +7,14 @@
 //
 
 #import "TestView.h"
+#import <Masonry/Masonry.h>
 
 @implementation TestView
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
+        
+        self.baseLabel.text = @"哈哈哈哈哈哈哈哈哈哈哈哈";
         
         
     
