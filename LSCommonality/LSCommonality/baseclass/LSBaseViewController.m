@@ -67,12 +67,15 @@
  **/
 - (void)goBackViewController
 {
-    if(self.navigationController){
+    if(!self.presentingViewController){
         [self.navigationController popViewControllerAnimated:YES];
     }else{
-        [self dismissViewControllerAnimated:YES completion:nil];
+        if (self.navigationController) {
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        } else {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
     }
-    
 }
 
 

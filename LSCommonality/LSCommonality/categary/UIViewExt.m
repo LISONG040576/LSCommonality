@@ -5,6 +5,8 @@
  */
 
 #import "UIViewExt.h"
+#import "Masonry.h"
+#import "LSCommon.h"
 
 CGPoint CGRectGetCenter(CGRect rect)
 {
@@ -190,3 +192,158 @@ CGRect CGRectMoveToCenter(CGRect rect, CGPoint center)
 	self.frame = newframe;	
 }
 @end
+
+
+
+@implementation UIView (HFHelper)
+
+- (void)loadData:(id)data
+{
+}
+
+@end
+
+
+@implementation UIView (HFErrorPlaceHolder)
+
+- (void)showNodataWithImage:(NSString *)imageName noDataInfo:(NSString *)noDataInfo top:(CGFloat)top imageWith:(CGFloat)imageWidth
+{
+    for (id obj in self.subviews) {
+        if ([obj isKindOfClass:[HENoDataView class]]) {
+            [obj removeFromSuperview];
+        }
+    }
+    
+    CGRect nodataVFrame = self.bounds;
+    nodataVFrame = CGRectMake(0, 0, self.bounds.size.width, nodataVFrame.size.height);
+    HENoDataView *nodataView = [[HENoDataView alloc] initWithFrame:nodataVFrame imageTopHeight:top imageWith:imageWidth showImage:imageName noDataTip:noDataInfo];
+    nodataView.backgroundColor = self.backgroundColor;
+    [self addSubview:nodataView];
+}
+
+- (void)dismissNoDataView
+{
+    for (id obj in self.subviews) {
+        if ([obj isKindOfClass:[HENoDataView class]]) {
+            [obj removeFromSuperview];
+        }
+    }
+}
+
+@end
+
+
+
+
+@interface HENoDataView ()
+
+@property (nonatomic, strong) UIImageView *mainIV;//
+@property (nonatomic, strong) UILabel *remarkLabel;//提示信息
+
+@end
+@implementation HENoDataView
+{
+    NSString *_imageName;
+    NSString *_noDataInfo;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame showImage:(NSString *)imageName noDataTip:(NSString *)noDataInfo
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        _imageName = imageName;
+        _noDataInfo = noDataInfo;
+        [self configViewUI];
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame imageTopHeight:(CGFloat)topHeight imageWith:(CGFloat)imageWidth showImage:(NSString *)imageName noDataTip:(NSString *)noDataInfo
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        _imageName = imageName;
+        _noDataInfo = noDataInfo;
+        [self configViewUIWithTopHeight:topHeight width:imageWidth];
+    }
+    return self;
+}
+
+- (void)configViewUI
+{
+    UIImage *image = [UIImage imageNamed:_imageName];
+    CGFloat ratio = self.bounds.size.width / 375;
+    CGFloat width = image.size.width * ratio;
+    CGFloat height = width;
+    if (image.size.width != image.size.height) {
+        height = image.size.height * ratio;
+    }
+    //    self.mainIV.image = [UIImage imageNamed:image];
+    self.mainIV.image = image;
+    self.remarkLabel.text = _noDataInfo;
+    
+    [self.mainIV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(0);
+        make.centerY.mas_equalTo(-77 * self.bounds.size.height / 603);
+        make.width.mas_equalTo(width);
+        make.height.mas_equalTo(height);
+    }];
+    
+    [self.remarkLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(0);
+        make.top.mas_equalTo(self.mainIV.mas_bottom).offset(self.bounds.size.height * 27 / 603);
+        make.height.mas_lessThanOrEqualTo(100);
+    }];
+}
+
+- (void)configViewUIWithTopHeight:(CGFloat)topHeight width:(CGFloat)imageWith
+{
+    UIImage *image = [UIImage imageNamed:_imageName];
+    CGFloat ratio = imageWith / image.size.width;
+    CGFloat height = imageWith;
+    if (image.size.width != image.size.height) {
+        height = image.size.height * ratio;
+    }
+    //    self.mainIV.image = [UIImage imageNamed:image];
+    self.mainIV.image = image;
+    self.remarkLabel.text = _noDataInfo;
+    
+    [self.mainIV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(0);
+        make.top.mas_equalTo(topHeight);
+        make.width.mas_equalTo(imageWith);
+        make.height.mas_equalTo(height);
+    }];
+    
+    [self.remarkLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(0);
+        make.top.mas_equalTo(self.mainIV.mas_bottom).offset(self.bounds.size.height * 27 / 603);
+        make.height.mas_lessThanOrEqualTo(100);
+    }];
+}
+
+
+- (UIImageView *)mainIV
+{
+    if (!_mainIV) {
+        _mainIV = [[UIImageView alloc] init];
+        [self addSubview:_mainIV];
+    }
+    return _mainIV;
+}
+
+- (UILabel *)remarkLabel
+{
+    if (!_remarkLabel) {
+        _remarkLabel  = [[UILabel alloc] init];
+        _remarkLabel.textColor = UIColorWithHexString(@"999999");
+        _remarkLabel.textAlignment = NSTextAlignmentCenter;
+        _remarkLabel.font = [UIFont systemFontOfSize:12];
+        _remarkLabel.numberOfLines = 0;
+        [self addSubview:_remarkLabel];
+    }
+    return _remarkLabel;
+}
+
+@end
+

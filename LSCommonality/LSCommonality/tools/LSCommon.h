@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <UIKit/UIKit.h>
 
 //打印替换
 #define NSLog(...) printf("%f %s\n",[[NSDate date]timeIntervalSince1970],[[NSString stringWithFormat:__VA_ARGS__]UTF8String]);
@@ -60,6 +60,26 @@
 #define iPhone6     ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)
 #define iPhone6plus ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
 
+
+/**
+ RGB全局函数定义
+ 
+ @param red 0 - 255
+ @param green 0 - 255
+ @param blue 0 - 255
+ @param alpha 0 - 1.0
+ @return UIColor
+ */
+FOUNDATION_EXPORT UIColor * RGBColor(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
+
+/**
+ hex色值获取颜色
+ 
+ @param hexStr hex色值
+ @return UIColor
+ */
+FOUNDATION_EXPORT UIColor * UIColorWithHexString(NSString *hexStr);
+FOUNDATION_EXPORT UIColor * UIColorWithHexStringAndAlpha(NSString *hexStr, CGFloat alpha);
 
 
 NS_ASSUME_NONNULL_BEGIN

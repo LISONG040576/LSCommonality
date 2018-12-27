@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0993B37921D46CD000BD1335 /* UIViewController+Push.m in Sources */ = {isa = PBXBuildFile; fileRef = 0993B37821D46CD000BD1335 /* UIViewController+Push.m */; };
+		0993B37E21D46CDD00BD1335 /* HFBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0993B37B21D46CDD00BD1335 /* HFBaseTableViewCell.m */; };
+		0993B37F21D46CDD00BD1335 /* HFBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0993B37D21D46CDD00BD1335 /* HFBaseView.m */; };
 		394A1B32EB7250482A81B551 /* libPods-LSCommonality.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C77CE6175502A0BCC4E2622 /* libPods-LSCommonality.a */; };
 		6CA65EE121D4956700B0009B /* web_close_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CA65EE021D4956700B0009B /* web_close_icon@2x.png */; };
 		6CA65EE321D4963200B0009B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CA65EE221D4963200B0009B /* Default-568h@2x.png */; };
@@ -40,6 +43,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0993B37721D46CD000BD1335 /* UIViewController+Push.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Push.h"; sourceTree = "<group>"; };
+		0993B37821D46CD000BD1335 /* UIViewController+Push.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Push.m"; sourceTree = "<group>"; };
+		0993B37A21D46CDD00BD1335 /* HFBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFBaseTableViewCell.h; sourceTree = "<group>"; };
+		0993B37B21D46CDD00BD1335 /* HFBaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFBaseTableViewCell.m; sourceTree = "<group>"; };
+		0993B37C21D46CDD00BD1335 /* HFBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFBaseView.h; sourceTree = "<group>"; };
+		0993B37D21D46CDD00BD1335 /* HFBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFBaseView.m; sourceTree = "<group>"; };
 		4C77CE6175502A0BCC4E2622 /* libPods-LSCommonality.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LSCommonality.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5820F9B0304113A0FEC333EE /* Pods-LSCommonality.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSCommonality.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LSCommonality/Pods-LSCommonality.debug.xcconfig"; sourceTree = "<group>"; };
 		6CA65EE021D4956700B0009B /* web_close_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "web_close_icon@2x.png"; sourceTree = "<group>"; };
@@ -188,6 +197,8 @@
 		F517190121B10CBB0072B6D2 /* categary */ = {
 			isa = PBXGroup;
 			children = (
+				0993B37721D46CD000BD1335 /* UIViewController+Push.h */,
+				0993B37821D46CD000BD1335 /* UIViewController+Push.m */,
 				F517191621B4C90C0072B6D2 /* UIViewController+LSNumberTypeJudge.h */,
 				F517191521B4C90C0072B6D2 /* UIViewController+LSNumberTypeJudge.m */,
 				F517191221B4C9040072B6D2 /* UIView+ViewController.h */,
@@ -207,6 +218,10 @@
 				F517190721B10ED00072B6D2 /* LSBaseViewController.m */,
 				F517192B21B50A360072B6D2 /* LSBaseWebViewController.h */,
 				F517192C21B50A360072B6D2 /* LSBaseWebViewController.m */,
+				0993B37A21D46CDD00BD1335 /* HFBaseTableViewCell.h */,
+				0993B37B21D46CDD00BD1335 /* HFBaseTableViewCell.m */,
+				0993B37C21D46CDD00BD1335 /* HFBaseView.h */,
+				0993B37D21D46CDD00BD1335 /* HFBaseView.m */,
 			);
 			path = baseclass;
 			sourceTree = "<group>";
@@ -378,7 +393,10 @@
 				F517193021B513F80072B6D2 /* LSWebViewLoadingView.m in Sources */,
 				F517193721B61E6D0072B6D2 /* LSCommon.m in Sources */,
 				F51718F921B10BE20072B6D2 /* main.m in Sources */,
+				0993B37921D46CD000BD1335 /* UIViewController+Push.m in Sources */,
 				F51718EB21B10BE10072B6D2 /* LSCommonAppDelegate.m in Sources */,
+				0993B37E21D46CDD00BD1335 /* HFBaseTableViewCell.m in Sources */,
+				0993B37F21D46CDD00BD1335 /* HFBaseView.m in Sources */,
 				F517192D21B50A360072B6D2 /* LSBaseWebViewController.m in Sources */,
 				F517190B21B4C5A90072B6D2 /* UIViewExt.m in Sources */,
 				F517191421B4C9040072B6D2 /* UIView+ViewController.m in Sources */,

@@ -30,3 +30,41 @@ CGRect  CGRectMoveToCenter(CGRect rect, CGPoint center);
 - (void) scaleBy: (CGFloat) scaleFactor;
 - (void) fitInSize: (CGSize) aSize;
 @end
+
+@interface UIView (HFHelper)
+
+- (void)loadData:(nullable id)data;
+
+@end
+
+
+@interface UIView (HFErrorPlaceHolder)
+
+/**
+ 显示无数据画面
+ 
+ @param imageName 中间图片名称
+ @param noDataInfo 提示信息
+ @param top 距离顶部的高度
+ @param imageWidth 图片的宽度
+ */
+- (void)showNodataWithImage:(NSString *)imageName noDataInfo:(NSString *)noDataInfo top:(CGFloat)top imageWith:(CGFloat)imageWidth;
+
+/**
+ 消除
+ */
+- (void)dismissNoDataView;
+
+@end
+
+
+/**
+ 无数据时显示的View
+ */
+@interface HENoDataView : UIView
+
+- (instancetype)initWithFrame:(CGRect)frame showImage:(NSString *)imageName noDataTip:(NSString *)noDataInfo;
+
+- (instancetype)initWithFrame:(CGRect)frame imageTopHeight:(CGFloat)topHeight imageWith:(CGFloat)imageWidth showImage:(NSString *)imageName noDataTip:(NSString *)noDataInfo;
+
+@end
