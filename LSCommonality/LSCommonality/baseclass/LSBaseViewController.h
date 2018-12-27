@@ -16,16 +16,20 @@
 
 @interface LSBaseViewController : UIViewController
 
-/**
- *  viewModel基类属性，baseVC的每一个子类在初始化子viewmodel 的时候，一定要按照下面的形势编写：
- *  
- *  例子 ： self.baseViewModel = self.子viewModel = [[子ViewModelClass alloc] init];
- */
-//@property(nonatomic,strong)HEBaseViewModel *baseViewModel;
 /** loading **/
 @property(nonatomic,strong)UILabel *baseLoadingLab;
 
 @property(nonatomic,strong)UILabel *customTitleView;
+
+/**
+ 返回按钮
+ */
+@property(nonatomic,strong)UIButton *customBackBtn;
+
+/**
+ 右侧按钮
+ */
+@property(nonatomic,strong)UIButton *customRightBtn;
 
 
 /** baseLoadLab点击方法 **/
@@ -62,6 +66,8 @@
  @param textColor 右侧按钮文字颜色
  */
 - (void)showCustomRightBtnWithTitle:(NSString *)title fontSize:(NSInteger)fontSize textColor:(UIColor *)textColor;
+
+- (void)showCustomRightBtnWihtImage:(UIImage *)image;
 
 
 /**

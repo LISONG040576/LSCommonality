@@ -16,6 +16,19 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    
+    // 创建window
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    // 创建tabbarVC
+    
+    // 设置根视图控制器
+    
+    self.window.rootViewController = (UIViewController *)[NSClassFromString(@"LSCommonViewController") new];
+    self.window.backgroundColor = [UIColor whiteColor];
+    // 显示
+    [self.window makeKeyAndVisible];
+    
     // Override point for customization after application launch.
     return YES;
 }

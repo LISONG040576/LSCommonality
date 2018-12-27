@@ -16,7 +16,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    __weak LSCommonViewController *weakVC = self;
+    [[NSTimer scheduledTimerWithTimeInterval:10 * 60 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        
+        if (weakVC.view.backgroundColor == [UIColor whiteColor]) {
+            weakVC.view.backgroundColor = [UIColor blueColor];
+        }else{
+            weakVC.view.backgroundColor = [UIColor whiteColor];
+        }
+        
+        
+    }] fire] ;
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self presentViewController:(UIViewController *)[NSClassFromString(@"LSBaseWebViewController") new] animated:YES completion:nil];
 }
 
 

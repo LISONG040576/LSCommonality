@@ -34,6 +34,7 @@ typedef void (^LSWebViewBlock) (NSString *url);
 
 
 
+
 @property(nonatomic,copy)LSWebViewBlock webBlock;
 
 @property(nonatomic,strong)UIImageView *noDataImageView;

@@ -13,9 +13,27 @@
 
 @interface LSBaseWebViewController () <WKUIDelegate,WKNavigationDelegate>
 
-@property (nonatomic, copy) NSString *initializationUrlStr;
 
+/**
+ 当前展示的URL
+ */
+@property (nonatomic, copy) NSString *currentURLStr;
+
+/**
+ 加载视图
+ */
 @property(nonatomic,strong) LSWebViewLoadingView *loadingPressView;
+
+/**
+ 关闭按钮
+ */
+@property(nonatomic,strong)UIButton *closeBtn;
+
+/**
+ 刷新按钮
+ */
+@property(nonatomic,strong)UIButton *refreshBtn;
+
 
 
 @end
@@ -86,7 +104,7 @@
     
     
     /** 加载进度条 **/
-    self.loadingPressView = [[LSWebViewLoadingView alloc] initWithFrame:CGRectMake(0, 64, kSCREEN_SIZE.width, 1.5)];
+    self.loadingPressView = [[LSWebViewLoadingView alloc] initWithFrame:CGRectMake(0, KNewFitNavigationHeight, kSCREEN_SIZE.width, 1.5)];
     self.loadingPressView.lineColor = [UIColor orangeColor];
     if (!self.notShowLoadPross) {
         [self.view addSubview:self.loadingPressView];
@@ -106,9 +124,27 @@
     /** 自定义导航 **/
     [self showCustomBackBtn];
     [self showCustomTitleView];
+    [self showCustomRightBtnWithTitle:@"刷新" fontSize:15 textColor:COLOR_HEX(@"666666")];
+    
+    self.closeBtn.centerY = self.customBackBtn.centerY;
+    self.closeBtn.left = self.customBackBtn.right;
+    
+    
 }
 
-
+- (UIButton *)closeBtn{
+    if (!_closeBtn) {
+        _closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_closeBtn setImage:ImageWithName(@"web_close_icon") forState:(UIControlStateNormal)];
+        _closeBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        _closeBtn.frame = CGRectMake(0, KNewFitNavigation(20), 20, 20);
+//        [_closeBtn setBackgroundColor:[UIColor orangeColor]];
+        [_closeBtn addTarget:self action:@selector(closeBackAction) forControlEvents:(UIControlEventTouchUpInside)];
+        [self.view addSubview:_closeBtn];
+    }
+    
+    return _closeBtn;
+}
 
 
 - (WKWebView *)webView{
@@ -219,13 +255,21 @@
     
 // 重写返回按钮方法
 - (void)goBackViewController{
-    if (self.isPresent) {
-        /** 如果是模态进来的 **/
-        [self dismissViewControllerAnimated:YES completion:nil];
+    
+    if ([self.webView canGoBack]) {
+        [self.webView goBack];
     }else{
-        /** 如果是push进来的 **/
-        [self.navigationController popViewControllerAnimated:YES];
+        if (self.presentationController) {
+            /** 如果是模态进来的 **/
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }else{
+            /** 如果是push进来的 **/
+            [self.navigationController popViewControllerAnimated:YES];
+        }
     }
+    
+    
+    
 }
 
 - (UIImageView *)noDataImageView{
@@ -245,9 +289,14 @@
     [_webView removeObserver:self forKeyPath:@"title"];
 }
 
-- (void)closeWebView:(UIButton *)sender
+- (void)closeBackAction
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.presentationController) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else if(self.navigationController){
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
 }
 
 

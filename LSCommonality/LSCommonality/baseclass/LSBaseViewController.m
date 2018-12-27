@@ -126,8 +126,12 @@
     [customBackBtn setImage:image forState:(UIControlStateNormal)];
     customBackBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
     customBackBtn.frame = CGRectMake(0, KNewFitNavigation(20), 40, 40);
-    [self.view addSubview:customBackBtn];
     [customBackBtn addTarget:self action:@selector(goBackViewController) forControlEvents:(UIControlEventTouchUpInside)];
+    
+    self.customBackBtn = customBackBtn;
+    [self.view addSubview:self.customBackBtn];
+    
+    
 }
 
 - (void)showCustomTitleView{
@@ -153,8 +157,8 @@
     titleView.textAlignment = NSTextAlignmentCenter;
     titleView.text = self.title;
     titleView.textColor = textColor;
-    titleView.font = Font(size);
-    [self.view addSubview:titleView];
+    self.customTitleView = titleView;
+    [self.view addSubview:self.customTitleView];
 }
 
 - (void)showCustomRightBtnWithTitle:(NSString *)title fontSize:(NSInteger)fontSize textColor:(UIColor *)textColor{
@@ -165,16 +169,27 @@
     customRightBtn.titleLabel.numberOfLines = 0;
     [customRightBtn setTitleColor:textColor forState:(UIControlStateNormal)];
 //    [customRightBtn setBackgroundColor:MainColor];
-
-    [self.view addSubview:customRightBtn];
+    
     [customRightBtn addTarget:self action:@selector(customRightButtonAction) forControlEvents:(UIControlEventTouchUpInside)];
+    
+    self.customRightBtn = customRightBtn;
+    [self.view addSubview:self.customRightBtn];
 }
-//
-//- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
-//
-//    return UIInterfaceOrientationMaskPortrait;
-//}
-//
+
+
+- (void)showCustomRightBtnWihtImage:(UIImage *)image{
+    UIButton *customRightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [customRightBtn setImage:image forState:(UIControlStateNormal)];
+    customRightBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    customRightBtn.frame = CGRectMake(0, KNewFitNavigation(20), 40, 40);
+    [customRightBtn addTarget:self action:@selector(goBackViewController) forControlEvents:(UIControlEventTouchUpInside)];
+    
+    self.customRightBtn = customRightBtn;
+    [self.view addSubview:self.customRightBtn];
+    
+    
+}
+
 
 
 
