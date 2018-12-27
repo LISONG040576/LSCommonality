@@ -13,6 +13,8 @@
 		394A1B32EB7250482A81B551 /* libPods-LSCommonality.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C77CE6175502A0BCC4E2622 /* libPods-LSCommonality.a */; };
 		6CA65EE121D4956700B0009B /* web_close_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CA65EE021D4956700B0009B /* web_close_icon@2x.png */; };
 		6CA65EE321D4963200B0009B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CA65EE221D4963200B0009B /* Default-568h@2x.png */; };
+		6CA65EE621D4A01200B0009B /* TestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CA65EE521D4A01200B0009B /* TestView.m */; };
+		6CA65EEA21D4AD0400B0009B /* refresh_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CA65EE921D4AD0400B0009B /* refresh_icon@3x.png */; };
 		F51718EB21B10BE10072B6D2 /* LSCommonAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F51718EA21B10BE10072B6D2 /* LSCommonAppDelegate.m */; };
 		F51718EE21B10BE10072B6D2 /* LSCommonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F51718ED21B10BE10072B6D2 /* LSCommonViewController.m */; };
 		F51718F321B10BE20072B6D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F51718F221B10BE20072B6D2 /* Assets.xcassets */; };
@@ -53,6 +55,9 @@
 		5820F9B0304113A0FEC333EE /* Pods-LSCommonality.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSCommonality.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LSCommonality/Pods-LSCommonality.debug.xcconfig"; sourceTree = "<group>"; };
 		6CA65EE021D4956700B0009B /* web_close_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "web_close_icon@2x.png"; sourceTree = "<group>"; };
 		6CA65EE221D4963200B0009B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		6CA65EE421D4A01200B0009B /* TestView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestView.h; sourceTree = "<group>"; };
+		6CA65EE521D4A01200B0009B /* TestView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestView.m; sourceTree = "<group>"; };
+		6CA65EE921D4AD0400B0009B /* refresh_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh_icon@3x.png"; sourceTree = "<group>"; };
 		BD6EA5DF4AF62228EAC14443 /* Pods-LSCommonality.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSCommonality.release.xcconfig"; path = "Pods/Target Support Files/Pods-LSCommonality/Pods-LSCommonality.release.xcconfig"; sourceTree = "<group>"; };
 		F51718E621B10BE10072B6D2 /* LSCommonality.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LSCommonality.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F51718E921B10BE10072B6D2 /* LSCommonAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSCommonAppDelegate.h; sourceTree = "<group>"; };
@@ -164,6 +169,8 @@
 				F51718EA21B10BE10072B6D2 /* LSCommonAppDelegate.m */,
 				F51718EC21B10BE10072B6D2 /* LSCommonViewController.h */,
 				F51718ED21B10BE10072B6D2 /* LSCommonViewController.m */,
+				6CA65EE421D4A01200B0009B /* TestView.h */,
+				6CA65EE521D4A01200B0009B /* TestView.m */,
 				F51718F221B10BE20072B6D2 /* Assets.xcassets */,
 				F51718F421B10BE20072B6D2 /* LaunchScreen.storyboard */,
 				F51718F721B10BE20072B6D2 /* Info.plist */,
@@ -238,6 +245,7 @@
 		F517192021B507BB0072B6D2 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				6CA65EE921D4AD0400B0009B /* refresh_icon@3x.png */,
 				6CA65EE221D4963200B0009B /* Default-568h@2x.png */,
 				6CA65EE021D4956700B0009B /* web_close_icon@2x.png */,
 				F517192221B507CE0072B6D2 /* newBackIcon@2x.png */,
@@ -325,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F571ACAE21BA0F76009DCE2C /* Corner_RightTRop_White.png in Resources */,
+				6CA65EEA21D4AD0400B0009B /* refresh_icon@3x.png in Resources */,
 				F517192821B507D70072B6D2 /* newBackIcon_W@2x.png in Resources */,
 				6CA65EE121D4956700B0009B /* web_close_icon@2x.png in Resources */,
 				F571ACAA21BA0F6A009DCE2C /* Corner_LeftTop_White.png in Resources */,
@@ -392,6 +401,7 @@
 				F517191B21B4D1790072B6D2 /* LSUserModel.m in Sources */,
 				F517193021B513F80072B6D2 /* LSWebViewLoadingView.m in Sources */,
 				F517193721B61E6D0072B6D2 /* LSCommon.m in Sources */,
+				6CA65EE621D4A01200B0009B /* TestView.m in Sources */,
 				F51718F921B10BE20072B6D2 /* main.m in Sources */,
 				0993B37921D46CD000BD1335 /* UIViewController+Push.m in Sources */,
 				F51718EB21B10BE10072B6D2 /* LSCommonAppDelegate.m in Sources */,

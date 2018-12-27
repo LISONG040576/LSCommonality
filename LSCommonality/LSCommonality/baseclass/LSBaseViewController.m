@@ -138,7 +138,7 @@
 }
 
 - (void)showCustomTitleView{
-    UILabel *titleView = [[UILabel alloc] initWithFrame:CGRectMake(0, KNewFitNavigation(20), kSCREEN_SIZE.width - 100, 40)];
+    UILabel *titleView = [[UILabel alloc] initWithFrame:CGRectMake(0, KNewFitNavigation(20), kSCREEN_SIZE.width - 180, 40)];
     titleView.centerX = self.view.centerX;
     titleView.textAlignment = NSTextAlignmentCenter;
     titleView.text = self.title;
@@ -167,12 +167,12 @@
 - (void)showCustomRightBtnWithTitle:(NSString *)title fontSize:(NSInteger)fontSize textColor:(UIColor *)textColor{
     UIButton *customRightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [customRightBtn setTitle:title forState:(UIControlStateNormal)];
-    customRightBtn.frame = CGRectMake(kSCREEN_SIZE.width - 80, KNewFitNavigation(20), 60, 40);
+    customRightBtn.frame = CGRectMake(kSCREEN_SIZE.width - 60, KNewFitNavigation(20), 40, 40);
     customRightBtn.titleLabel.font = Font(fontSize);
     customRightBtn.titleLabel.numberOfLines = 0;
     [customRightBtn setTitleColor:textColor forState:(UIControlStateNormal)];
 //    [customRightBtn setBackgroundColor:MainColor];
-    
+    [customRightBtn sizeToFit];
     [customRightBtn addTarget:self action:@selector(customRightButtonAction) forControlEvents:(UIControlEventTouchUpInside)];
     
     self.customRightBtn = customRightBtn;
@@ -184,14 +184,19 @@
     UIButton *customRightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [customRightBtn setImage:image forState:(UIControlStateNormal)];
     customRightBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    customRightBtn.frame = CGRectMake(0, KNewFitNavigation(20), 40, 40);
-    [customRightBtn addTarget:self action:@selector(goBackViewController) forControlEvents:(UIControlEventTouchUpInside)];
+    customRightBtn.frame = CGRectMake(kSCREEN_SIZE.width - 50, KNewFitNavigation(20), 40, 40);
+    [customRightBtn addTarget:self action:@selector(customRightButtonAction) forControlEvents:(UIControlEventTouchUpInside)];
     
     self.customRightBtn = customRightBtn;
     [self.view addSubview:self.customRightBtn];
     
     
 }
+
+//- (void)setTitle:(NSString *)title{
+//    
+//    self.customTitleView.text = title;
+//}
 
 
 

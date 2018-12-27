@@ -10,14 +10,10 @@
 #import "LSCommon.h"
 #import <SDAutoLayout/UIView+SDAutoLayout.h>
 #import "LSWebViewLoadingView.h"
+#import "UIViewController+Push.h"
+
 
 @interface LSBaseWebViewController () <WKUIDelegate,WKNavigationDelegate>
-
-
-/**
- 当前展示的URL
- */
-@property (nonatomic, copy) NSString *currentURLStr;
 
 /**
  加载视图
@@ -34,6 +30,11 @@
  */
 @property(nonatomic,strong)UIButton *refreshBtn;
 
+/**
+ 分享按钮按钮
+ */
+@property(nonatomic,strong)UIButton *shareBtn;
+
 
 
 @end
@@ -47,8 +48,14 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    
+    self.theURL = self.params[@"webUrlStr"];
+    
 
     [self displayUI];
+    
+    
     
     NSLog(@"title --> %@, url --> %@", _theTitle, _theURL);
 }
@@ -59,12 +66,6 @@
     
     self.noDataImageView.hidden = YES;
     
-    if (self.showNaviBar) {
-       
-    }else{
-        
-        
-    }
     UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_SIZE.width, 20)];
     topView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:topView];
@@ -80,11 +81,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    if (self.fristPageShowNaviBar) {
-//        self.navigationController.navigationBar.hidden = NO;
-    }else{
-//        self.navigationController.navigationBar.hidden = YES;
-    }
+
 }
 
 - (void)displayUI{
@@ -93,42 +90,44 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.webView];
     
-    NSURL *url = [NSURL URLWithString:[self.theURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    NSURLRequest *request =[NSURLRequest requestWithURL:url];
-    [_webView loadRequest:request];
-    
-  
-    
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(OC2JS) name:@"oc2js_Data" object:nil];
-    
-    
-    /** 加载进度条 **/
-    self.loadingPressView = [[LSWebViewLoadingView alloc] initWithFrame:CGRectMake(0, KNewFitNavigationHeight, kSCREEN_SIZE.width, 1.5)];
-    self.loadingPressView.lineColor = [UIColor orangeColor];
-    if (!self.notShowLoadPross) {
+    if(self.theURL.length == 0){
+        self.title = @"url is null";
+    }else{
+        
+        
+        NSURL *url = [NSURL URLWithString:[self.theURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        NSURLRequest *request =[NSURLRequest requestWithURL:url];
+        [_webView loadRequest:request];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(OC2JS) name:@"oc2js_Data" object:nil];
+        
+        /** 加载进度条 **/
+        self.loadingPressView = [[LSWebViewLoadingView alloc] initWithFrame:CGRectMake(0, KNewFitNavigationHeight, kSCREEN_SIZE.width, 1.5)];
+        self.loadingPressView.lineColor = [UIColor orangeColor];
         [self.view addSubview:self.loadingPressView];
-    }
-    
-    
-    
-    UIScrollView *scrollView = self.webView.scrollView;
-    
-    for (int i =0; i < scrollView.subviews.count ; i++) {
-        UIView *view = [scrollView.subviews objectAtIndex:i];
-        if ([view isKindOfClass:[UIImageView class]]) {
-            view.hidden =YES ;
+        
+        UIScrollView *scrollView = self.webView.scrollView;
+        
+        for (int i =0; i < scrollView.subviews.count ; i++) {
+            UIView *view = [scrollView.subviews objectAtIndex:i];
+            if ([view isKindOfClass:[UIImageView class]]) {
+                view.hidden =YES ;
+            }
         }
     }
+    
+    
     
     /** 自定义导航 **/
     [self showCustomBackBtn];
     [self showCustomTitleView];
-    [self showCustomRightBtnWithTitle:@"刷新" fontSize:15 textColor:COLOR_HEX(@"666666")];
+    [self showCustomRightBtnWihtImage:ImageWithName(@"refresh_icon")];
     
     self.closeBtn.centerY = self.customBackBtn.centerY;
-    self.closeBtn.left = self.customBackBtn.right;
+    self.closeBtn.left = self.customBackBtn.right + 5;
     
+    self.shareBtn.centerY = self.customRightBtn.centerY;
+    self.shareBtn.right = self.customRightBtn.left;
     
 }
 
@@ -144,6 +143,33 @@
     }
     
     return _closeBtn;
+}
+
+- (UIButton *)shareBtn{
+    if (!_shareBtn) {
+        _shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [_shareBtn setImage:ImageWithName(@"web_close_icon") forState:(UIControlStateNormal)];
+        [_shareBtn setTitle:@"分享" forState:(UIControlStateNormal)];
+//        _shareBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        _shareBtn.titleLabel.font = Font(13);
+        [_shareBtn sizeToFit];
+        [_shareBtn setTitleColor:COLOR_HEX(@"222222") forState:(UIControlStateNormal)];
+//        [_shareBtn setBackgroundColor:[UIColor orangeColor]];
+        [_shareBtn addTarget:self action:@selector(shareAction) forControlEvents:(UIControlEventTouchUpInside)];
+        [self.view addSubview:_shareBtn];
+    }
+    
+    return _shareBtn;
+}
+
+- (UIImageView *)noDataImageView{
+    if (!_noDataImageView) {
+        _noDataImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 150)];
+        _noDataImageView.contentMode = UIViewContentModeScaleAspectFit;
+        _noDataImageView.image = ImageWithName(@"noNetWorkIcon");
+    }
+    
+    return _noDataImageView;
 }
 
 
@@ -165,9 +191,6 @@
         [_webView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:NULL];
         
     }
-    
-    _webView.scrollView.bounces = !self.canNotScroll;
-    
     return _webView;
 }
 
@@ -221,14 +244,15 @@
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
     NSLog(@" --- web界面在请求发送之前，决定是否跳转");
-    
-//    decisionHandler(WKNavigationActionPolicyAllow);//允许
+
+    decisionHandler(WKNavigationActionPolicyAllow);//允许
 //    decisionHandler(WKNavigationActionPolicyCancel);//不允许
 }
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler{
     NSLog(@" --- web界面在收到相应之后，决定是否跳转");
-//    decisionHandler(WKNavigationResponsePolicyAllow);//允许
+    
+    decisionHandler(WKNavigationResponsePolicyAllow);//允许
 //    decisionHandler(WKNavigationResponsePolicyCancel);//不允许
 }
 
@@ -272,22 +296,25 @@
     
 }
 
-- (UIImageView *)noDataImageView{
-    if (!_noDataImageView) {
-        _noDataImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 150)];
-        _noDataImageView.contentMode = UIViewContentModeScaleAspectFit;
-        _noDataImageView.image = ImageWithName(@"noNetWorkIcon");
-    }
+- (void)customRightButtonAction{
     
-    return _noDataImageView;
+    
+    [self.webView reload];
+    
+}
+
+
+- (void)shareAction{
+    
+    
+    
+    
 }
 
 
 
--(void)dealloc{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [_webView removeObserver:self forKeyPath:@"title"];
-}
+
+
 
 - (void)closeBackAction
 {
@@ -298,6 +325,17 @@
     }
     
 }
+
+
+
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [_webView removeObserver:self forKeyPath:@"title"];
+}
+
+
+
 
 
 @end

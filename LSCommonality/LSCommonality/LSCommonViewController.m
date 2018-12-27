@@ -7,6 +7,7 @@
 //
 
 #import "LSCommonViewController.h"
+#import "UIViewController+Push.h"
 
 @interface LSCommonViewController ()
 
@@ -32,7 +33,15 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [self presentViewController:(UIViewController *)[NSClassFromString(@"LSBaseWebViewController") new] animated:YES completion:nil];
+    
+    [self turnToViewController:@"LSBaseWebViewController"
+                        params:[NSMutableDictionary
+                                dictionaryWithDictionary:@{@"webUrlStr":@"https://www.baidu.com"}]
+                      callBack:^(NSDictionary * _Nonnull callBackParams) {
+        
+    } turnType:(HEViewControlllerTurnTypePresent) animation:YES];
+    
+
 }
 
 

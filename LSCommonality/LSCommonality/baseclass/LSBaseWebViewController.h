@@ -20,21 +20,6 @@ typedef void (^LSWebViewBlock) (NSString *url);
 
 @property (nonatomic, strong) NSString *theURL;
 
-@property(nonatomic,assign)BOOL isPresent;
-
-@property(nonatomic,assign)BOOL canNotScroll;//bounds是否固定
-
-@property(nonatomic,assign)BOOL notShowShareBtn;
-
-@property(nonatomic,assign)BOOL showNaviBar;
-
-@property(nonatomic,assign)BOOL fristPageShowNaviBar;
-
-@property(nonatomic,assign)BOOL notShowLoadPross;
-
-
-
-
 @property(nonatomic,copy)LSWebViewBlock webBlock;
 
 @property(nonatomic,strong)UIImageView *noDataImageView;

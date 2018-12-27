@@ -85,12 +85,4 @@
 - (void)showCustomHeaderLineViewWithColor:(UIColor *)color heigh:(CGFloat)heigh;
 
 
-
-
-
-
-
-
-
-
 @end

@@ -12,6 +12,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HFBaseView : UIView
 
+
+@property (nonatomic, strong) UILabel *baseLabel;//
+@property (nonatomic, strong) UILabel *baseMainLabel;//
+@property (nonatomic, strong) UILabel *baseSubMainLabel;//
+@property (nonatomic, strong) UILabel *baseDetailLabel;//
+@property (nonatomic, strong) UILabel *baseSubDetailLabel;//
+
+@property (nonatomic, strong) UIImageView *baseIV;//
+@property (nonatomic, strong) UIImageView *baseMainIV;//
+
+@property (nonatomic, strong) UIView *baseHorizonLine;//
+
 @end
 
 

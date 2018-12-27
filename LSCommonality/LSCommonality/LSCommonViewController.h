@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LSCommonViewController : UIViewController
+#import "LSBaseViewController.h"
+
+@interface LSCommonViewController : LSBaseViewController
 
 
 @end
