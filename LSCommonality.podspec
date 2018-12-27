@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   s.source_files  = "LSCommonality/LSCommonality/LSCommonality.h"
   s.public_header_files = "LSCommonality/LSCommonality/LSCommonality.h"
 
-#,"LSCommonality/LSCommonality/**/*.{h,m}"
+
 
   s.resources = "LSCommonality/LSCommonality/**/*.{png,jpg}"
 
