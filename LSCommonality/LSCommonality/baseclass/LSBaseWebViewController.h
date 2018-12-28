@@ -10,21 +10,26 @@
 #import <WebKit/WebKit.h>
 
 
-
-
-typedef void (^LSWebViewBlock) (NSString *url);
-
 @interface LSBaseWebViewController : LSBaseViewController
 
-@property (nonatomic, strong) NSString *theTitle;
+@property(nonatomic,assign)BOOL notShowNavBar;
 
 @property (nonatomic, strong) NSString *theURL;
 
-@property(nonatomic,copy)LSWebViewBlock webBlock;
+/**
+ 关闭按钮
+ */
+@property(nonatomic,strong)UIButton *closeBtn;
 
-@property(nonatomic,strong)UIImageView *noDataImageView;
+/**
+ 刷新按钮
+ */
+@property(nonatomic,strong)UIButton *refreshBtn;
 
-
+/**
+ 分享按钮按钮
+ */
+@property(nonatomic,strong)UIButton *shareBtn;
 
 /**
  *  webView

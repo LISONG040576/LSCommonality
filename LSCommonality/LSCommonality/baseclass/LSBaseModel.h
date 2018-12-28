@@ -15,12 +15,15 @@
  */
 @interface LSBaseModel : NSObject
 
+/** 原始数据 **/
+@property(nonatomic,strong)NSDictionary *originalDic;
+
 
 /**
  直接传入要解析的数据生成需要的Model
 
  @param dic 要解析的dic数据
- @return HEBaseModel
+ @return HFBaseModel
  */
 + (instancetype)objectWithDictionaryData:(NSDictionary *)dic;
 

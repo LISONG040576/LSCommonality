@@ -16,6 +16,7 @@
 #import "LSBaseViewController.h"
 #import "LSCommon.h"
 #import <SDAutoLayout/UIView+SDAutoLayout.h>
+#import "HFNavigationBar.h"
 
 
 @interface LSBaseViewController ()
@@ -33,6 +34,9 @@
     [self.view addSubview:self.baseLoadingLab];
     
     self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
+    
+    
+    [self showCustomNavigationBar];
     
 }
 
@@ -80,6 +84,31 @@
 
 
 
+
+
+
+
+
+
+/**
+ 展示自带加载view
+ */
+- (void)showLoadingLab{
+    self.baseLoadingLab.hidden = NO;
+}
+/**
+ 展示自带加载viewd自定义文字
+ */
+- (void)showLoadingLabWithText:(NSString *)text{
+    self.baseLoadingLab.hidden = NO;
+    self.baseLoadingLab.text = text;
+}
+/**
+ 隐藏关闭自带的加载view
+ */
+- (void)closeLoadingLab{
+    self.baseLoadingLab.hidden = YES;
+}
 /**
  如果加载视图有点击事件
  */
@@ -94,6 +123,159 @@
     
 }
 
+/**
+ 返回按钮旁边的按钮的点击事件
+ */
+- (void)secondButtonAction{
+    
+}
+
+/**
+ 最右侧按钮旁边的按钮事件
+ */
+- (void)thirdButtonAction{
+    
+}
+
+
+- (void)hiddenCustomBackButton{
+    self.navigationBar.backButton.hidden = YES;
+}
+
+- (void)setTitle:(NSString *)title{
+    
+    [super setTitle:title];
+    self.navigationBar.baseMainLabel.text = title;
+}
+
+- (void)showCustomNavigationBarBottomLineWithColor:(UIColor *)lineColor{
+    self.navigationBar.baseHorizonLine.backgroundColor = lineColor;
+}
+
+- (void)showCustomNavigationBar{
+    [self showCustonNavigationBarWithBackgroundColor:nil TitleSize:0 titleColor:nil  backImage:nil rightTitle:nil rightTitleSize:0 rightTitleColor:nil rightImage:nil secondTitle:nil secondTitleSize:0 secondTitleColor:nil secondImage:nil thirdTitleSize:0 thirdTitleColor:nil thirdImage:nil];
+}
+
+- (void)showCustomNavigationBarWithBackImage:(UIImage *)backImage{
+    [self showCustonNavigationBarWithBackgroundColor:nil TitleSize:0 titleColor:nil  backImage:backImage rightTitle:nil rightTitleSize:0 rightTitleColor:nil rightImage:nil secondTitle:nil secondTitleSize:0 secondTitleColor:nil secondImage:nil thirdTitleSize:0 thirdTitleColor:nil thirdImage:nil];
+}
+
+- (void)showCustomNavigationBarWithRightTitle:(NSString *)rightTitle rightSize:(NSInteger)rightSize rightColor:(UIColor *)rightColor{
+    [self showCustonNavigationBarWithBackgroundColor:nil TitleSize:0 titleColor:nil  backImage:nil rightTitle:rightTitle rightTitleSize:rightSize rightTitleColor:rightColor rightImage:nil secondTitle:nil secondTitleSize:0 secondTitleColor:nil secondImage:nil thirdTitleSize:0 thirdTitleColor:nil thirdImage:nil];
+}
+
+- (void)showCustomNavigationBarWithSecondTitle:(NSString *)secondTitle secondSize:(NSInteger)secondSize secondColor:(UIColor *)secondColor{
+    [self showCustonNavigationBarWithBackgroundColor:nil TitleSize:0 titleColor:nil  backImage:nil rightTitle:nil rightTitleSize:0 rightTitleColor:nil rightImage:nil secondTitle:secondTitle secondTitleSize:secondSize secondTitleColor:secondColor secondImage:nil thirdTitleSize:0 thirdTitleColor:nil thirdImage:nil];
+}
+
+- (void)showCustomNavigationBarWithRightImage:(UIImage *)rightImage{
+    [self showCustonNavigationBarWithBackgroundColor:nil TitleSize:0 titleColor:nil  backImage:nil rightTitle:nil rightTitleSize:0 rightTitleColor:nil rightImage:rightImage secondTitle:nil secondTitleSize:0 secondTitleColor:nil secondImage:nil thirdTitleSize:0 thirdTitleColor:nil thirdImage:nil];
+}
+
+- (void)showCustomNavigationBarWithSecondImage:(UIImage *)secondImage{
+    [self showCustonNavigationBarWithBackgroundColor:nil TitleSize:0 titleColor:nil  backImage:nil rightTitle:nil rightTitleSize:0 rightTitleColor:nil rightImage:nil secondTitle:nil secondTitleSize:0 secondTitleColor:nil secondImage:secondImage thirdTitleSize:0 thirdTitleColor:nil thirdImage:nil];
+}
+
+- (void)showCustomNavigationBarWithThirdImage:(UIImage *)ThirdImage{
+    [self showCustonNavigationBarWithBackgroundColor:nil TitleSize:0 titleColor:nil  backImage:nil rightTitle:nil rightTitleSize:0 rightTitleColor:nil rightImage:nil secondTitle:nil secondTitleSize:0 secondTitleColor:nil secondImage:nil thirdTitleSize:0 thirdTitleColor:nil thirdImage:ThirdImage];
+}
+
+
+
+- (void)showCustonNavigationBarWithBackgroundColor:(UIColor *)bgColor
+                                         TitleSize:(NSInteger)titleSize
+                                        titleColor:(UIColor *)titleColor
+                                         backImage:(UIImage *)backImage
+                                        rightTitle:(NSString *)rightTitle
+                                    rightTitleSize:(NSInteger)rightSize
+                                   rightTitleColor:(UIColor *)rightColor
+                                        rightImage:(UIImage *)rightImage
+                                   secondTitle:(NSString *)secondTitle
+                                   secondTitleSize:(NSInteger)secondSize
+                                  secondTitleColor:(UIColor *)secondColor
+                                       secondImage:(UIImage *)seconImage
+                                    thirdTitleSize:(NSInteger)thirdSize
+                                   thirdTitleColor:(UIColor *)thirdColor
+                                        thirdImage:(UIImage *)thirdImage{
+    
+    
+    
+    self.navigationBar.baseMainLabel.text = self.title;
+
+    
+    if (bgColor) {
+        self.navigationBar.backgroundColor = bgColor;
+    }
+    
+    if (titleSize > 0) {
+        self.navigationBar.baseMainLabel.font = Font(titleSize);
+    }
+    
+    if (titleColor) {
+        self.navigationBar.baseMainLabel.textColor = titleColor;
+    }
+    
+    if (backImage) {
+        [self.navigationBar.backButton setImage:backImage forState:(UIControlStateNormal)];
+    }
+    
+    if (rightTitle) {
+        [self.navigationBar.rightButton setTitle:rightTitle forState:(UIControlStateNormal)];
+    }
+    
+    if (rightColor) {
+        [self.navigationBar.rightButton setTitleColor:rightColor forState:(UIControlStateNormal)];
+    }
+    
+    if (rightSize > 0) {
+        self.navigationBar.rightButton.titleLabel.font = Font(rightSize);
+    }
+    
+    if (rightImage) {
+        [self.navigationBar.rightButton setImage:rightImage forState:(UIControlStateNormal)];
+    }
+    
+    
+    if (secondTitle) {
+        [self.navigationBar.secondButton setTitle:secondTitle forState:(UIControlStateNormal)];
+    }
+    
+    if (secondColor) {
+        [self.navigationBar.rightButton setTitleColor:secondColor forState:(UIControlStateNormal)];
+    }
+    
+    if (secondSize > 0) {
+        self.navigationBar.rightButton.titleLabel.font = Font(secondSize);
+    }
+    
+    if (seconImage) {
+        [self.navigationBar.secondButton setImage:seconImage forState:(UIControlStateNormal)];
+    }
+    
+    if (thirdColor) {
+        [self.navigationBar.rightButton setTitleColor:thirdColor forState:(UIControlStateNormal)];
+    }
+    
+    if (thirdSize > 0) {
+        self.navigationBar.rightButton.titleLabel.font = Font(thirdSize);
+    }
+    
+    if (thirdImage) {
+        [self.navigationBar.thirdButton setImage:thirdImage forState:(UIControlStateNormal)];
+    }
+    
+    
+    
+    [self.navigationBar.backButton addTarget:self action:@selector(goBackViewController) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.navigationBar.rightButton addTarget:self action:@selector(customRightButtonAction) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.navigationBar.secondButton addTarget:self action:@selector(secondButtonAction) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.navigationBar.thirdButton addTarget:self action:@selector(thirdButtonAction) forControlEvents:(UIControlEventTouchUpInside)];
+    
+    
+    
+    
+}
+
 
 
 
@@ -101,6 +283,22 @@
 
 
 #pragma mark - gets / sets
+
+- (HFNavigationBar *)navigationBar{
+    if (!_navigationBar) {
+        _navigationBar = [[HFNavigationBar alloc] init];
+        [self.view addSubview:_navigationBar];
+    }
+    
+    [_navigationBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(0);
+        make.top.mas_equalTo(0);
+        make.right.mas_equalTo(0);
+        make.height.mas_equalTo(KNewFitNavigationHeight);
+    }];
+    
+    return _navigationBar;
+}
 
 - (UILabel *)baseLoadingLab{
     if (!_baseLoadingLab) {
@@ -120,83 +318,7 @@
 }
 
 
-- (void)showCustomBackBtn{
-    [self showCustomBackBtnWihtImage:ImageWithName(@"newBackIcon")];
-}
 
-- (void)showCustomBackBtnWihtImage:(UIImage *)image{
-    UIButton *customBackBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [customBackBtn setImage:image forState:(UIControlStateNormal)];
-    customBackBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    customBackBtn.frame = CGRectMake(0, KNewFitNavigation(20), 40, 40);
-    [customBackBtn addTarget:self action:@selector(goBackViewController) forControlEvents:(UIControlEventTouchUpInside)];
-    
-    self.customBackBtn = customBackBtn;
-    [self.view addSubview:self.customBackBtn];
-    
-    
-}
-
-- (void)showCustomTitleView{
-    UILabel *titleView = [[UILabel alloc] initWithFrame:CGRectMake(0, KNewFitNavigation(20), kSCREEN_SIZE.width - 180, 40)];
-    titleView.centerX = self.view.centerX;
-    titleView.textAlignment = NSTextAlignmentCenter;
-    titleView.text = self.title;
-    self.customTitleView = titleView;
-    [self.view addSubview:self.customTitleView];
-}
-
-- (void)showCustomHeaderLineViewWithColor:(UIColor *)color heigh:(CGFloat)heigh{
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, KNewFitNavigationHeight - 1, kSCREEN_SIZE.width, heigh)];
-
-    lineView.backgroundColor = color;
-
-    [self.view addSubview:lineView];
-}
-
-- (void)showCustomTitleViewWithFontSize:(NSInteger)size textColor:(UIColor *)textColor{
-    UILabel *titleView = [[UILabel alloc] initWithFrame:CGRectMake(0, KNewFitNavigation(20), kSCREEN_SIZE.width - 100, 40)];
-    titleView.centerX = self.view.centerX;
-    titleView.textAlignment = NSTextAlignmentCenter;
-    titleView.text = self.title;
-    titleView.textColor = textColor;
-    self.customTitleView = titleView;
-    [self.view addSubview:self.customTitleView];
-}
-
-- (void)showCustomRightBtnWithTitle:(NSString *)title fontSize:(NSInteger)fontSize textColor:(UIColor *)textColor{
-    UIButton *customRightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [customRightBtn setTitle:title forState:(UIControlStateNormal)];
-    customRightBtn.frame = CGRectMake(kSCREEN_SIZE.width - 60, KNewFitNavigation(20), 40, 40);
-    customRightBtn.titleLabel.font = Font(fontSize);
-    customRightBtn.titleLabel.numberOfLines = 0;
-    [customRightBtn setTitleColor:textColor forState:(UIControlStateNormal)];
-//    [customRightBtn setBackgroundColor:MainColor];
-    [customRightBtn sizeToFit];
-    [customRightBtn addTarget:self action:@selector(customRightButtonAction) forControlEvents:(UIControlEventTouchUpInside)];
-    
-    self.customRightBtn = customRightBtn;
-    [self.view addSubview:self.customRightBtn];
-}
-
-
-- (void)showCustomRightBtnWihtImage:(UIImage *)image{
-    UIButton *customRightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [customRightBtn setImage:image forState:(UIControlStateNormal)];
-    customRightBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    customRightBtn.frame = CGRectMake(kSCREEN_SIZE.width - 50, KNewFitNavigation(20), 40, 40);
-    [customRightBtn addTarget:self action:@selector(customRightButtonAction) forControlEvents:(UIControlEventTouchUpInside)];
-    
-    self.customRightBtn = customRightBtn;
-    [self.view addSubview:self.customRightBtn];
-    
-    
-}
-
-//- (void)setTitle:(NSString *)title{
-//    
-//    self.customTitleView.text = title;
-//}
 
 
 

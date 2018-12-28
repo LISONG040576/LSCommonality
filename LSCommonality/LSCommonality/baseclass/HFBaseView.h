@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LSCommonality.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,6 +24,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIImageView *baseMainIV;//
 
 @property (nonatomic, strong) UIView *baseHorizonLine;//
+
+
+- (void)layoutViews;
 
 @end
 

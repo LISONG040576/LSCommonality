@@ -13,11 +13,13 @@
 
 + (instancetype)objectWithDictionaryData:(NSDictionary *)dic
 {
+    
     LSBaseModel *baseModel = [[self alloc] init];
     if (!dic) {
         return baseModel;
     }
     [baseModel setDataDictionary:dic];
+    
     return baseModel;
 }
 
@@ -87,6 +89,9 @@
     if (![dic isKindOfClass:[NSDictionary class]]) {
         return;
     }
+    
+    self.originalDic = dic;
+    
     Class clazz = [self class];
     while (clazz && clazz != [LSBaseModel class] && clazz != [NSObject class]) {
         unsigned int count = 0;

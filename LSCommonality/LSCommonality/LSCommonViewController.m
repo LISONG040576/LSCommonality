@@ -8,6 +8,7 @@
 
 #import "LSCommonViewController.h"
 #import "UIViewController+Push.h"
+#import "HFNavigationBar.h"
 
 @interface LSCommonViewController ()
 
@@ -19,26 +20,25 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
-//    __weak LSCommonViewController *weakVC = self;
-//    [[NSTimer scheduledTimerWithTimeInterval:10 * 60 repeats:YES block:^(NSTimer * _Nonnull timer) {
-//
-//        if (weakVC.view.backgroundColor == [UIColor whiteColor]) {
-//            weakVC.view.backgroundColor = [UIColor blueColor];
-//        }else{
-//            weakVC.view.backgroundColor = [UIColor whiteColor];
-//        }
-//
-//        
-//    }] fire] ;
+    self.title = @"首页测试";
+    [self showCustomNavigationBar];
+    [self showLoadingLabWithText:@"数据正在加载，请稍后..."];
+    
+    
+    
+    
+
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
     [self turnToViewController:@"LSBaseWebViewController"
-                        params:[NSMutableDictionary dictionaryWithDictionary:@{@"webUrlStr":@"https://www.baidu.com"}]
+                        params:[NSMutableDictionary dictionaryWithDictionary:@{@"webUrlStr":@"https://www.baidu.com",
+                                                                               @"notShowNavBar":@"0"
+                                                                               }]
                       callBack:^(NSDictionary * _Nonnull callBackParams) {
     }
-                      turnType:(HEViewControlllerTurnTypePresent)
+                      turnType:HEViewControlllerTurnTypePresent
                      animation:YES];
     
 

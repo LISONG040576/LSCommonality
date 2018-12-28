@@ -33,7 +33,7 @@
 #define kSCREEN_SIZE  [UIScreen mainScreen].bounds.size
 
 //自适应全面屏导航高度
-#define KNewFitNavigationHeight     (kSCREEN_SIZE.height >= 812 ? (64 + 24) : 64)
+#define KNewFitNavigationHeight     (kSCREEN_SIZE.height < 812 ?  64 :(kSCREEN_SIZE.height < 1000 ? (64 + 24) : 40))
 #define KNewFitTabBarHeight     (kSCREEN_SIZE.height >= 812 ? (49 + 24) : 49)
 #define KNewFitNavigation(a)     (kSCREEN_SIZE.height >= 812 ? (a + 24) : a)
 

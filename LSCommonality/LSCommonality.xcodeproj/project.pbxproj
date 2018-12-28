@@ -18,6 +18,7 @@
 		6CA65EEC21D4C4A700B0009B /* LSCommonality.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 6CA65EEB21D4C4A700B0009B /* LSCommonality.podspec */; };
 		6CA65EEE21D4CB5300B0009B /* Default-812h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CA65EED21D4CB5300B0009B /* Default-812h@3x.png */; };
 		6CA65EF021D4CD1100B0009B /* Default-896h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CA65EEF21D4CD1100B0009B /* Default-896h@3x.png */; };
+		6CBE4B8F21D5C02600684193 /* HFNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE4B8E21D5C02600684193 /* HFNavigationBar.m */; };
 		F51718EB21B10BE10072B6D2 /* LSCommonAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F51718EA21B10BE10072B6D2 /* LSCommonAppDelegate.m */; };
 		F51718EE21B10BE10072B6D2 /* LSCommonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F51718ED21B10BE10072B6D2 /* LSCommonViewController.m */; };
 		F51718F321B10BE20072B6D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F51718F221B10BE20072B6D2 /* Assets.xcassets */; };
@@ -63,6 +64,8 @@
 		6CA65EEB21D4C4A700B0009B /* LSCommonality.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LSCommonality.podspec; path = ../LSCommonality.podspec; sourceTree = "<group>"; };
 		6CA65EED21D4CB5300B0009B /* Default-812h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-812h@3x.png"; sourceTree = "<group>"; };
 		6CA65EEF21D4CD1100B0009B /* Default-896h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-896h@3x.png"; sourceTree = "<group>"; };
+		6CBE4B8D21D5C02600684193 /* HFNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HFNavigationBar.h; sourceTree = "<group>"; };
+		6CBE4B8E21D5C02600684193 /* HFNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HFNavigationBar.m; sourceTree = "<group>"; };
 		BD6EA5DF4AF62228EAC14443 /* Pods-LSCommonality.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSCommonality.release.xcconfig"; path = "Pods/Target Support Files/Pods-LSCommonality/Pods-LSCommonality.release.xcconfig"; sourceTree = "<group>"; };
 		F51718E621B10BE10072B6D2 /* LSCommonality.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LSCommonality.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F51718E921B10BE10072B6D2 /* LSCommonAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSCommonAppDelegate.h; sourceTree = "<group>"; };
@@ -192,6 +195,8 @@
 				F517192E21B513F80072B6D2 /* LSWebViewLoadingView.m */,
 				F571ACA421BA0D71009DCE2C /* LSCornerImageView.h */,
 				F571ACA521BA0D71009DCE2C /* LSCornerImageView.m */,
+				6CBE4B8D21D5C02600684193 /* HFNavigationBar.h */,
+				6CBE4B8E21D5C02600684193 /* HFNavigationBar.m */,
 			);
 			path = customview;
 			sourceTree = "<group>";
@@ -420,6 +425,7 @@
 				F517190E21B4C5B30072B6D2 /* LSUtilities.m in Sources */,
 				F517190821B10ED00072B6D2 /* LSBaseViewController.m in Sources */,
 				F571ACA321BA0715009DCE2C /* LSCycleBannerView.m in Sources */,
+				6CBE4B8F21D5C02600684193 /* HFNavigationBar.m in Sources */,
 				F571ACA621BA0D71009DCE2C /* LSCornerImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

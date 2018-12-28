@@ -20,20 +20,10 @@
  */
 @property(nonatomic,strong) LSWebViewLoadingView *loadingPressView;
 
-/**
- 关闭按钮
- */
-@property(nonatomic,strong)UIButton *closeBtn;
 
-/**
- 刷新按钮
- */
-@property(nonatomic,strong)UIButton *refreshBtn;
 
-/**
- 分享按钮按钮
- */
-@property(nonatomic,strong)UIButton *shareBtn;
+
+@property(nonatomic,strong)UIImageView *noDataImageView;
 
 
 
@@ -49,22 +39,23 @@
     
     [super viewDidLoad];
     
-    
+    /** 解析穿参 **/
     self.theURL = self.params[@"webUrlStr"];
+    self.notShowNavBar = [self.params[@"notShowNavBar"] boolValue];
     
-
+    /** 创建UI **/
     [self displayUI];
     
     
     
-    NSLog(@"title --> %@, url --> %@", _theTitle, _theURL);
+    NSLog(@"title --> %@, url --> %@", self.title, _theURL);
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     self.noDataImageView.hidden = YES;
-    UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_SIZE.width, 20)];
+    UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_SIZE.width, KNewFitNavigation(20))];
     topView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:topView];
 }
@@ -78,27 +69,22 @@
 }
 
 - (void)displayUI{
-    
-    self.title = _theTitle;
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.webView];
     
     if(self.theURL.length == 0){
         self.title = @"url is null";
     }else{
+        
+        /** 加载web界面 **/
         NSURL *url = [NSURL URLWithString:[self.theURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         NSURLRequest *request =[NSURLRequest requestWithURL:url];
-        [_webView loadRequest:request];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(OC2JS) name:@"oc2js_Data" object:nil];
+        [self.webView loadRequest:request];
         
         /** 加载进度条 **/
-        self.loadingPressView = [[LSWebViewLoadingView alloc] initWithFrame:CGRectMake(0, KNewFitNavigationHeight, kSCREEN_SIZE.width, 1.5)];
-        self.loadingPressView.lineColor = [UIColor orangeColor];
         [self.view addSubview:self.loadingPressView];
         
         UIScrollView *scrollView = self.webView.scrollView;
-        
         for (int i =0; i < scrollView.subviews.count ; i++) {
             UIView *view = [scrollView.subviews objectAtIndex:i];
             if ([view isKindOfClass:[UIImageView class]]) {
@@ -107,51 +93,30 @@
         }
     }
     
-    
-    
-    /** 自定义导航 **/
-    [self showCustomBackBtn];
-    [self showCustomTitleView];
-    [self showCustomRightBtnWihtImage:ImageWithName(@"refresh_icon")];
-    
-    self.closeBtn.centerY = self.customBackBtn.centerY;
-    self.closeBtn.left = self.customBackBtn.right + 5;
-    
-    self.shareBtn.centerY = self.customRightBtn.centerY;
-    self.shareBtn.right = self.customRightBtn.left;
-    
+    if (self.notShowNavBar) {
+        self.webView.top = 0;
+        self.webView.height = kSCREEN_SIZE.height;
+        self.loadingPressView.top = KNewFitNavigation(20);
+    }else{
+        /** 自定义导航 **/
+        [self showCustomNavigationBarWithRightImage:ImageWithName(@"refresh_icon")];
+        [self showCustomNavigationBarWithThirdImage:ImageWithName(@"refresh_icon")];
+        [self showCustomNavigationBarWithSecondImage:ImageWithName(@"web_close_icon")];
+    }
 }
 
-- (UIButton *)closeBtn{
-    if (!_closeBtn) {
-        _closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_closeBtn setImage:ImageWithName(@"web_close_icon") forState:(UIControlStateNormal)];
-        _closeBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        _closeBtn.frame = CGRectMake(0, KNewFitNavigation(20), 20, 20);
-//        [_closeBtn setBackgroundColor:[UIColor orangeColor]];
-        [_closeBtn addTarget:self action:@selector(closeBackAction) forControlEvents:(UIControlEventTouchUpInside)];
-        [self.view addSubview:_closeBtn];
+- (LSWebViewLoadingView *)loadingPressView{
+    if(!_loadingPressView){
+        
+        _loadingPressView = [[LSWebViewLoadingView alloc] initWithFrame:CGRectMake(0, KNewFitNavigationHeight, kSCREEN_SIZE.width, 1.5)];
+        _loadingPressView.lineColor = [UIColor orangeColor];
     }
     
-    return _closeBtn;
+    return _loadingPressView;
 }
 
-- (UIButton *)shareBtn{
-    if (!_shareBtn) {
-        _shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//        [_shareBtn setImage:ImageWithName(@"web_close_icon") forState:(UIControlStateNormal)];
-        [_shareBtn setTitle:@"分享" forState:(UIControlStateNormal)];
-//        _shareBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        _shareBtn.titleLabel.font = Font(13);
-        [_shareBtn sizeToFit];
-        [_shareBtn setTitleColor:COLOR_HEX(@"222222") forState:(UIControlStateNormal)];
-//        [_shareBtn setBackgroundColor:[UIColor orangeColor]];
-        [_shareBtn addTarget:self action:@selector(shareAction) forControlEvents:(UIControlEventTouchUpInside)];
-        [self.view addSubview:_shareBtn];
-    }
-    
-    return _shareBtn;
-}
+
+
 
 - (UIImageView *)noDataImageView{
     if (!_noDataImageView) {
@@ -189,9 +154,7 @@
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     if ([keyPath isEqualToString:@"title"]) {
         if (object == self.webView) {
-            if (self.title.length < 1) {
-                self.customTitleView.text = self.webView.title;
-            }
+            self.title = self.webView.title;
         } else {
             [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
         }
@@ -249,24 +212,6 @@
 
 
 
-
-
-- (void)OC2JS{
-    
-   
-
-    
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-
-    
-
     
 // 重写返回按钮方法
 - (void)goBackViewController{
@@ -289,25 +234,18 @@
 
 - (void)customRightButtonAction{
     
-    
     [self.webView reload];
     
 }
 
 
-- (void)shareAction{
-    
+- (void)thirdButtonAction{
     
     
     
 }
 
-
-
-
-
-
-- (void)closeBackAction
+- (void)secondButtonAction
 {
     if (self.presentationController) {
         [self dismissViewControllerAnimated:YES completion:nil];
