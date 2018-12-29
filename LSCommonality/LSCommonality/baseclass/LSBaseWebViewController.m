@@ -181,8 +181,6 @@
     
     self.noDataImageView.hidden = YES;
     [self.loadingPressView endLoadingAnimation];
-
-    
 }
 
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error{
