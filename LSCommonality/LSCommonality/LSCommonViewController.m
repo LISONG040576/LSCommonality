@@ -21,7 +21,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.title = @"首页测试";
-    [self showCustomNavigationBar];
+    [self hiddenCustomBackButton];
     [self showLoadingLabWithText:@"数据正在加载，请稍后..."];
     
     

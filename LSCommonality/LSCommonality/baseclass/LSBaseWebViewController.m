@@ -212,8 +212,9 @@
 
 
 
-    
-// 重写返回按钮方法
+/**
+ 重写返回按钮方法
+ **/
 - (void)goBackViewController{
     
     if ([self.webView canGoBack]) {
@@ -227,11 +228,11 @@
             [self.navigationController popViewControllerAnimated:YES];
         }
     }
-    
-    
-    
 }
 
+/**
+ 最右侧按钮的事件
+ */
 - (void)customRightButtonAction{
     
     [self.webView reload];
@@ -239,12 +240,20 @@
 }
 
 
+/**
+ 分享按钮
+ */
 - (void)thirdButtonAction{
     
     
     
 }
 
+
+
+/**
+ 关闭web界面按钮
+ */
 - (void)secondButtonAction
 {
     if (self.presentationController) {
@@ -252,7 +261,6 @@
     }else if(self.navigationController){
         [self.navigationController popViewControllerAnimated:YES];
     }
-    
 }
 
 

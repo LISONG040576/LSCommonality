@@ -12,24 +12,14 @@
 
 @interface LSBaseWebViewController : LSBaseViewController
 
+
+/**
+ 不展示导航栏？？？？？
+ */
 @property(nonatomic,assign)BOOL notShowNavBar;
 
+/** url **/
 @property (nonatomic, strong) NSString *theURL;
-
-/**
- 关闭按钮
- */
-@property(nonatomic,strong)UIButton *closeBtn;
-
-/**
- 刷新按钮
- */
-@property(nonatomic,strong)UIButton *refreshBtn;
-
-/**
- 分享按钮按钮
- */
-@property(nonatomic,strong)UIButton *shareBtn;
 
 /**
  *  webView
