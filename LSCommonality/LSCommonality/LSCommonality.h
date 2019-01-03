@@ -23,6 +23,7 @@
 #import "HFBaseTableViewCell.h"
 #import "UIViewController+Push.h"
 #import <Masonry/Masonry.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 
 

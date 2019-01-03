@@ -160,5 +160,21 @@
                                         thirdImage:(UIImage *)thirdImage;
 
 
+/**
+ 展示导航背景图片
+ 
+ @param imageObj 图片对象，可以是Image，也可以是URL string
+ */
+- (void)showNavigationBgImageViewWithImageObj:(id)imageObj;
+
+
+
+/**
+ 修改导航栏的主题颜色
+
+ */
+- (void)changeNavigationBarThemeForWhite:(BOOL)isWhtie;
+
+
 
 @end

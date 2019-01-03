@@ -8,6 +8,8 @@
 
 #import "LSBaseViewController.h"
 #import <WebKit/WebKit.h>
+#import "UIViewController+Push.h"
+#import "LSCommon.h"
 
 
 @interface LSBaseWebViewController : LSBaseViewController

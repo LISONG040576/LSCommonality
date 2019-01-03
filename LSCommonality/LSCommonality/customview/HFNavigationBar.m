@@ -11,9 +11,6 @@
 @interface HFNavigationBar ()
 
 
-
-
-
 @end
 
 @implementation HFNavigationBar
@@ -25,7 +22,7 @@
 
 - (void)createSubView{
     
-    self.baseHorizonLine.backgroundColor = [UIColor whiteColor];
+    self.baseHorizonLine.backgroundColor = RGBACOLOR(1, 1, 1, 0);
     [self.baseHorizonLine mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(1);
         make.left.mas_equalTo(0);
@@ -45,7 +42,7 @@
     }];
     
     [self.backButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(10);
+        make.left.mas_equalTo(0);
         make.width.mas_equalTo(40);
         make.height.mas_equalTo(40);
         make.centerY.mas_equalTo(KNewFitNavigation(20)/2);
@@ -76,6 +73,25 @@
     }];
     
     
+    
+}
+
+- (void)showBgImageViewWithImageObj:(id)imageObj{
+    
+    [self.baseMainIV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(0);
+        make.left.mas_equalTo(0);
+        make.top.mas_equalTo(0);
+        make.bottom.mas_equalTo(0);
+    }];
+    
+    if ([imageObj isKindOfClass:[NSString class]]) {
+        [self.baseMainIV sd_setImageWithURL:URLWithString(imageObj) placeholderImage:ImageWithName(@"")];
+    }else if([imageObj isKindOfClass:[UIImage class]]){
+        self.baseMainIV.image = (UIImage *)imageObj;
+    }
+    
+    [self sendSubviewToBack:self.baseMainIV];
     
 }
 

@@ -15,7 +15,7 @@
 
 #import "LSBaseViewController.h"
 #import "LSCommon.h"
-#import <SDAutoLayout/UIView+SDAutoLayout.h>
+
 #import "HFNavigationBar.h"
 
 
@@ -31,9 +31,11 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
+    self.navigationController.navigationBarHidden = YES;
+    
     [self.view addSubview:self.baseLoadingLab];
     
-    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
+//    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
     
     
     [self showCustomNavigationBar];
@@ -44,6 +46,8 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    
     
 
 }
@@ -273,6 +277,27 @@
     
     
     
+    
+}
+
+
+
+- (void)showNavigationBgImageViewWithImageObj:(id)imageObj{
+    [self.navigationBar showBgImageViewWithImageObj:imageObj];
+}
+
+
+- (void)changeNavigationBarThemeForWhite:(BOOL)isWhtie{
+    
+    if (!isWhtie) {
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+        self.navigationBar.baseMainLabel.textColor = [UIColor blackColor];
+        [self showCustomNavigationBarWithBackImage:ImageWithName(@"newBackIcon")];
+    }else{
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+        self.navigationBar.baseMainLabel.textColor = [UIColor whiteColor];
+        [self showCustomNavigationBarWithBackImage:ImageWithName(@"newBackIcon_W")];
+    }
     
 }
 

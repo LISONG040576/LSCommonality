@@ -98,6 +98,8 @@
 {
     if (!_baseIV) {
         _baseIV = [[UIImageView alloc] init];
+        _baseIV.contentMode = UIViewContentModeScaleAspectFill;
+        _baseIV.clipsToBounds = YES;
         [self addSubview:_baseIV];
     }
     return _baseIV;
@@ -107,6 +109,8 @@
 {
     if (!_baseMainIV) {
         _baseMainIV = [[UIImageView alloc] init];
+        _baseMainIV.contentMode = UIViewContentModeScaleAspectFill;
+        _baseMainIV.clipsToBounds = YES;
         [self addSubview:_baseMainIV];
     }
     return _baseMainIV;

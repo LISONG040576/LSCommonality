@@ -24,7 +24,9 @@
     
     // 设置根视图控制器
     
-    self.window.rootViewController = (UIViewController *)[NSClassFromString(@"LSCommonViewController") new];
+    UINavigationController *naviVC = [[UINavigationController alloc] initWithRootViewController:(UIViewController *)[NSClassFromString(@"LSCommonViewController") new]];
+    
+    self.window.rootViewController = naviVC;
     self.window.backgroundColor = [UIColor whiteColor];
     // 显示
     [self.window makeKeyAndVisible];

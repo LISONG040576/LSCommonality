@@ -31,8 +31,7 @@
 #define KeyForLoginName                 @"KeyForLoginName"
 #define KeyForUserPassword              @"KeyForUserPassword"
 #define KeyForAccessToken               @"KeyForAccessToken"
-#define KeyForLoginType                 @"KeyForLoginType"
-#define KeyForFoodAccessToken           @"KeyForFoodAccessToken"
+
 #define KeyForEncryPassword             @"KeyForEncryPassword"
 
 #define KeyForAppName                   @"KeyForAppName"
@@ -48,13 +47,13 @@
 #define KeyForWeight                        @"KeyForWeight"
 #define KeyForCity                          @"KeyForCity"
 #define IsCryptography                      @"IsCryptography"
-#define IsVIP                               @"IsVIP"
+
 
 
 //用户登录和退出登录时通知
 #define KEY_USERINFO_REFRESH            @"KeyUserinfoRefresh"
 #define KEY_HASUNBINDDEVICE           @"KeyhasUnbindDevice"
-#define KEY_CANRECICEALARM              @"KeyCanNotreciveAlarm"
+
 
 /** 推荐菜谱时间记录 **/
 #define KEY_RECOMMENDPAGEUNM             @"recommendPageNum"
@@ -88,7 +87,6 @@ extern NSString *string(id obj);
 
 
 @property(nonatomic, copy)   NSString       *phone;             //手机号码
-@property(nonatomic, copy)   NSString       *jspwd;             //传递给js的密码,其他地方不可用
 @property(nonatomic, copy)   NSString       *userName;          //昵称
 @property(nonatomic, copy)   NSString       *password;          //密码
 @property(nonatomic, copy)   NSString       *token;             //
@@ -121,29 +119,8 @@ extern NSString *string(id obj);
 @property(nonatomic, assign) BOOL timeCheckSuccess;
 //是否不可以接受报警信息
 @property(nonatomic, assign) BOOL canNotReciveAlarm;
-
-@property(nonatomic, strong) NSNumber *hasBoard;//有留言板
-
-@property(nonatomic,assign)CGFloat foodFreshcount;//存储食材新鲜指数
-@property(nonatomic, assign) NSInteger  foodListCount;
-@property (nonatomic, assign) BOOL      isCancelUpdate;   //留言板视频上传判断
-@property (nonatomic, assign) BOOL      isUpImage;        //允许家庭相册上传
-//厂商标识
-@property(nonatomic, copy) NSString *vendorID;
-
-//临时用户ID
-@property(nonatomic, copy) NSString *linshiUserID;
-
-/** 推荐菜谱时间记录 **/
-@property(nonatomic, strong) NSString *recommendPageNum;
-
-@property(nonatomic, strong) NSString *recommendTime;
-
 /** 性别是否保密 **/
 @property(nonatomic, assign) BOOL sexIsBaomi;
-
-@property(nonatomic, assign) NSInteger   userQuanziID;
-
 /** 设备相关 **/
 @property(nonatomic, strong) NSString   *TOPDeviceTypeID; //养生壶测试ID
 

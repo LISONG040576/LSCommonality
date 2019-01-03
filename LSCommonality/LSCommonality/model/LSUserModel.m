@@ -42,26 +42,23 @@
 - (void)initData
 {
 
-    self.phone = [USER_DEFAULT objectForKey:KeyForUserPhone];
-    
-//    self.password = [HEPassWordCryptography DecipheringPasswordWithData:[USER_DEFAULT objectForKey:KeyForEncryPassword]];
-    self.userName = [USER_DEFAULT objectForKey:KeyForUserName];
-    self.jspwd = [USER_DEFAULT objectForKey:KeyForJSPassword];
-//    self.bj_userId = @"201609091849420079";
-    self.bj_userId = [USER_DEFAULT objectForKey:KeyForBJUserId];
-    self.userId = [USER_DEFAULT objectForKey:KeyForUserId];
-    self.token = [USER_DEFAULT objectForKey:KeyForAccessToken];
-    self.appName = [USER_DEFAULT objectForKey:KeyForAppName];
+    self.phone = [USER_DEFAULT objectForKey:@"user_phone"];
+    self.userName = [USER_DEFAULT objectForKey:@"user_name"];
+
+    self.bj_userId = [USER_DEFAULT objectForKey:@"beijing_user_id"];
+    self.userId = [USER_DEFAULT objectForKey:@"uhome_user_id"];
+    self.token = [USER_DEFAULT objectForKey:@"access_token"];
+    self.appName = [USER_DEFAULT objectForKey:@"app_name"];
     self.coSessionId = [USER_DEFAULT objectForKey:KeyForCoSessionId];
-    self.sdToken = [USER_DEFAULT objectForKey:KeyForSdToken];
+    self.sdToken = [USER_DEFAULT objectForKey:@"sd_token"];
     self.offUserId = [USER_DEFAULT objectForKey:KeyForOffUserId];
     
     self.sexIsBaomi = [[USER_DEFAULT objectForKey:KeySexBaomiStatus] boolValue];
     
-    self.headerImage = [[USER_DEFAULT objectForKey:KeyForHeaderImage] isEqualToString:@"https://g3.ykimg.com/0516000059898F6FADBC09B6EB0BEABF"] ? @"" : [USER_DEFAULT objectForKey:KeyForHeaderImage];
+    self.headerImage = [[USER_DEFAULT objectForKey:@"header_image"] isEqualToString:@"https://g3.ykimg.com/0516000059898F6FADBC09B6EB0BEABF"] ? @"" : [USER_DEFAULT objectForKey:@"header_image"];
     
-    if ([[USER_DEFAULT objectForKey:KeyForNickName] length] != 0) {
-        self.nickName = [USER_DEFAULT objectForKey:KeyForNickName];
+    if ([[USER_DEFAULT objectForKey:@"user_nick"] length] != 0) {
+        self.nickName = [USER_DEFAULT objectForKey:@"user_nick"];
     }else{
         NSLog(@"------- %@",self.phone);
         if ([StringWithNum(@"%@", self.phone) length] > 10) {
@@ -80,21 +77,18 @@
     self.birthday = [USER_DEFAULT objectForKey:KeyForBirthday];
     self.height = [USER_DEFAULT objectForKey:KeyForHeight];
     self.weight = [USER_DEFAULT objectForKey:KeyForWeight];
-    self.city = [USER_DEFAULT objectForKey:KeyForCity];
+    self.city = [USER_DEFAULT objectForKey:@"user_city"];
     self.remmenberPassword = [[USER_DEFAULT objectForKey:KeyForRememberPassword] boolValue];
     
     self.timeCheckSuccess = YES;
     
-    self.canNotReciveAlarm = [[USER_DEFAULT objectForKey:KEY_CANRECICEALARM] boolValue];
+    
     self.access_token = [USER_DEFAULT objectForKey:KeyForACCESS_TOKEN];
     self.refresh_token = [USER_DEFAULT objectForKey:KeyForREFRESH_TOKEN];
     self.u_open_id = [USER_DEFAULT objectForKey:KeyForu_open_id];
     self.u_user_id = [USER_DEFAULT objectForKey:KeyForu_user_id];
     
-    self.recommendTime = [USER_DEFAULT objectForKey:KEY_RECOMMENDTIME];
     
-    self.recommendPageNum = [USER_DEFAULT objectForKey:KEY_RECOMMENDPAGEUNM];
-    self.isVIP = [[USER_DEFAULT objectForKey:IsVIP] boolValue];
     self.environmentStatus = [[USER_DEFAULT objectForKey:KeyEnvironmentStatus] integerValue];
     
     
@@ -146,28 +140,28 @@
 //    self.coSessionId = @"";
 //    self.offUserId = @"";
 //    self.sdToken = @"";
-    [USER_DEFAULT removeObjectForKey:KeyForUserName];
-    [USER_DEFAULT removeObjectForKey:KeyForUserId];
-    [USER_DEFAULT removeObjectForKey:KeyForAccessToken];
-    [USER_DEFAULT removeObjectForKey:KeyForAppName];
+    [USER_DEFAULT removeObjectForKey:@"user_name"];
+    [USER_DEFAULT removeObjectForKey:@"uhome_user_id"];
+    [USER_DEFAULT removeObjectForKey:@"access_token"];
+    [USER_DEFAULT removeObjectForKey:@"app_name"];
     [USER_DEFAULT removeObjectForKey:KeyForCoSessionId];
-    [USER_DEFAULT removeObjectForKey:KeyForSdToken];
+    [USER_DEFAULT removeObjectForKey:@"sd_token"];
     [USER_DEFAULT removeObjectForKey:KeyForOffUserId];
-    [USER_DEFAULT removeObjectForKey:KeyForHeaderImage];
-    [USER_DEFAULT removeObjectForKey:KeyForNickName];
+    [USER_DEFAULT removeObjectForKey:@"header_image"];
+    [USER_DEFAULT removeObjectForKey:@"user_nick"];
     [USER_DEFAULT removeObjectForKey:KeyForSex];
     [USER_DEFAULT removeObjectForKey:KeyForBirthday];
     [USER_DEFAULT removeObjectForKey:KeyForHeight];
     [USER_DEFAULT removeObjectForKey:KeyForWeight];
-    [USER_DEFAULT removeObjectForKey:KeyForCity];
+    [USER_DEFAULT removeObjectForKey:@"user_city"];
     
-    [USER_DEFAULT removeObjectForKey:KeyForBJUserId];
+    [USER_DEFAULT removeObjectForKey:@"beijing_user_id"];
     
     [USER_DEFAULT removeObjectForKey:KeyForREFRESH_TOKEN];
     [USER_DEFAULT removeObjectForKey:KeyForu_open_id];
     [USER_DEFAULT removeObjectForKey:KeyForu_user_id];
    
-    [USER_DEFAULT removeObjectForKey:IsVIP];
+   
 
     USER.token = nil;
     [USER_DEFAULT synchronize];
@@ -179,25 +173,20 @@
 {
     _userId = userId;
 
-    USER_DEFAULT_SET(_userId, KeyForUserId);
+    USER_DEFAULT_SET(_userId, @"uhome_user_id");
 
     
 }
 
 
-- (void)setIsVIP:(BOOL)isVIP
-{
-    _isVIP = isVIP;
-    
-    USER_DEFAULT_SET(@(_isVIP), IsVIP);
-}
+
 
 
 - (void)setBj_userId:(NSString *)bj_userId
 {
     _bj_userId = bj_userId;
 
-    USER_DEFAULT_SET(_bj_userId, KeyForBJUserId);
+    USER_DEFAULT_SET(_bj_userId, @"beijing_user_id");
     
 }
 
@@ -225,20 +214,14 @@
 - (void)setSdToken:(NSString *)sdToken{
     _sdToken = sdToken;
     
-    USER_DEFAULT_SET(_sdToken, KeyForSdToken);
+    USER_DEFAULT_SET(_sdToken, @"sd_token");
 }
 
-- (void)setCanNotReciveAlarm:(BOOL)canNotReciveAlarm{
-    _canNotReciveAlarm = canNotReciveAlarm;
-    NSLog(@"----%@",@(_canNotReciveAlarm));
-    [USER_DEFAULT setObject:@(_canNotReciveAlarm) forKey:KEY_CANRECICEALARM];
-    [USER_DEFAULT synchronize];
-    
-}
+
 
 - (void)setPhone:(NSString *)phone {
     _phone = phone;
-    USER_DEFAULT_SET(_phone, KeyForUserPhone);
+    USER_DEFAULT_SET(_phone, @"user_phone");
 
 }
 
@@ -253,8 +236,8 @@
 {
     _token = token;
     
-//    USER_DEFAULT_SET(_token, KeyForAccessToken)
-    [USER_DEFAULT setObject:token forKey:KeyForAccessToken];
+
+    [USER_DEFAULT setObject:token forKey:@"access_token"];
     [USER_DEFAULT synchronize];
 
 }
@@ -278,37 +261,24 @@
         _nickName = @"未命名";
     }
     
-    USER_DEFAULT_SET(_nickName, KeyForNickName)
+    USER_DEFAULT_SET(_nickName, @"user_nick")
 }
 
-- (void)setRecommendTime:(NSString *)recommendTime{
-    _recommendTime = recommendTime;
-    
-    USER_DEFAULT_SET(_recommendTime, KEY_RECOMMENDTIME)
-}
-
-- (void)setRecommendPageNum:(NSString *)recommendPageNum{
-    _recommendPageNum = recommendPageNum;
-    
-    USER_DEFAULT_SET(_recommendPageNum, KEY_RECOMMENDPAGEUNM)
-}
 
 - (void)setHeaderImage:(NSString *)headerImage {
     _headerImage = headerImage;
-
-    USER_DEFAULT_SET(_headerImage, KeyForHeaderImage)
+    USER_DEFAULT_SET(_headerImage, @"header_image")
 }
+
 -(void)setSex:(NSString *)sex{
     _sex = sex;
 
-    
     USER_DEFAULT_SET(_sex, KeyForSex)
 }
 
 -(void)setBirthday:(NSString *)birthday{
     _birthday = birthday;
 
-    
     USER_DEFAULT_SET(_birthday, KeyForBirthday)
 }
 
@@ -321,7 +291,6 @@
 -(void)setWeight:(NSString *)weight{
     _weight = weight;
 
-    
     USER_DEFAULT_SET(_weight, KeyForWeight);
 }
 
@@ -332,10 +301,8 @@
     }
 
     
-    USER_DEFAULT_SET(_city, KeyForCity);
+    USER_DEFAULT_SET(_city, @"user_city");
 }
-
-
 
 
 - (void)setEnvironmentStatus:(NSInteger)environmentStatus {

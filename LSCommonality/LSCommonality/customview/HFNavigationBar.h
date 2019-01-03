@@ -22,6 +22,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong)UIButton *rightButton;
 
 
+/**
+ 展示导航背景图片
+
+ @param imageObj 图片对象，可以是Image，也可以是URL string
+ */
+- (void)showBgImageViewWithImageObj:(id)imageObj;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

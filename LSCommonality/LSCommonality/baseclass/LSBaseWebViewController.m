@@ -7,10 +7,10 @@
 //
 
 #import "LSBaseWebViewController.h"
-#import "LSCommon.h"
+
 #import <SDAutoLayout/UIView+SDAutoLayout.h>
 #import "LSWebViewLoadingView.h"
-#import "UIViewController+Push.h"
+
 
 
 @interface LSBaseWebViewController () <WKUIDelegate,WKNavigationDelegate>
@@ -39,14 +39,11 @@
     
     [super viewDidLoad];
     
-    /** 解析穿参 **/
     self.theURL = self.params[@"webUrlStr"];
     self.notShowNavBar = [self.params[@"notShowNavBar"] boolValue];
     
     /** 创建UI **/
     [self displayUI];
-    
-    
     
     NSLog(@"title --> %@, url --> %@", self.title, _theURL);
 }
@@ -55,9 +52,13 @@
 {
     [super viewWillAppear:animated];
     self.noDataImageView.hidden = YES;
-    UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_SIZE.width, KNewFitNavigation(20))];
-    topView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:topView];
+    
+    if (self.notShowNavBar) {
+        UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_SIZE.width, KNewFitNavigation(20))];
+        topView.backgroundColor = [UIColor whiteColor];
+        [self.view addSubview:topView];
+    }
+
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -100,7 +101,7 @@
     }else{
         /** 自定义导航 **/
         [self showCustomNavigationBarWithRightImage:ImageWithName(@"refresh_icon")];
-        [self showCustomNavigationBarWithThirdImage:ImageWithName(@"refresh_icon")];
+//        [self showCustomNavigationBarWithThirdImage:ImageWithName(@"refresh_icon")];
         [self showCustomNavigationBarWithSecondImage:ImageWithName(@"web_close_icon")];
     }
 }
@@ -108,7 +109,7 @@
 - (LSWebViewLoadingView *)loadingPressView{
     if(!_loadingPressView){
         
-        _loadingPressView = [[LSWebViewLoadingView alloc] initWithFrame:CGRectMake(0, KNewFitNavigationHeight, kSCREEN_SIZE.width, 1.5)];
+        _loadingPressView = [[LSWebViewLoadingView alloc] initWithFrame:CGRectMake(0, KNewFitNavigationHeight, kSCREEN_SIZE.width, 1)];
         _loadingPressView.lineColor = [UIColor orangeColor];
     }
     
@@ -186,7 +187,6 @@
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error{
     NSLog(@" --- web界面加载失败");
     
-    
     [self.loadingPressView endLoadingAnimation];
     [self.view addSubview:self.noDataImageView];
     self.noDataImageView.hidden = NO;
@@ -218,7 +218,7 @@
     if ([self.webView canGoBack]) {
         [self.webView goBack];
     }else{
-        if (self.presentationController) {
+        if (self.presentingViewController) {
             /** 如果是模态进来的 **/
             [self dismissViewControllerAnimated:YES completion:nil];
         }else{
@@ -254,7 +254,7 @@
  */
 - (void)secondButtonAction
 {
-    if (self.presentationController) {
+    if (self.presentingViewController) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }else if(self.navigationController){
         [self.navigationController popViewControllerAnimated:YES];

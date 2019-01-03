@@ -22,23 +22,32 @@
     
     self.title = @"首页测试";
     [self hiddenCustomBackButton];
-    [self showLoadingLabWithText:@"点击任意地方调转BaseWebViewController"];
+    [self showLoadingLabWithText:@"点击任意地方调转"];
+//    [self showBgImageViewWithImageObj:ImageWithName(@"boom_bg_icon_2")];
     
-    
-    
-    
-
 }
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+//    [self changeNavigationBarThemeForWhite:YES];
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+//    [self changeNavigationBarThemeForWhite:NO];
+}
+
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
-    [self turnToViewController:@"LSBaseWebViewController"
+    [self turnToViewController:@"LSTestWebViewController"
                         params:[NSMutableDictionary dictionaryWithDictionary:@{@"webUrlStr":@"https://www.baidu.com",
                                                                                @"notShowNavBar":@"0"
                                                                                }]
                       callBack:^(NSDictionary * _Nonnull callBackParams) {
     }
-                      turnType:HEViewControlllerTurnTypePresent
+                      turnType:HEViewControlllerTurnTypePush
                      animation:YES];
     
 
